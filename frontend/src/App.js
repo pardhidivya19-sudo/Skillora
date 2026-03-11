@@ -8,6 +8,7 @@ import Signup from "./pages/Signup";
 import UserDashboard from "./pages/UserDashboard";
 import Services from "./pages/Services";
 import VendorDashboard from "./pages/VendorDashboard";
+import VendorVerification from "./pages/VendorVerification";
 
 function LayoutWrapper() {
   const location = useLocation();
@@ -28,6 +29,7 @@ function LayoutWrapper() {
         <Route path="/user-dashboard" element={<UserDashboard />} />
         <Route path="/vendor-dashboard" element={<VendorDashboard />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/vendor-verification" element={<VendorVerification />} />
       </Routes>
 
       {!hideLayout && <Footer />}

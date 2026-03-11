@@ -17,27 +17,43 @@ function Login() {
   };
 
   const handleLogin = async () => {
-    try {
-      const res = await API.post("/auth/login", form);
+  try {
+    const res = await API.post("/auth/login", form);
 
-      const token = res.data.token;
+    const token = res.data.token;
 
-      localStorage.setItem("token", token);
+    localStorage.setItem("token", token);
 
-      // Decode JWT to get role
-      const payload = JSON.parse(atob(token.split(".")[1]));
-      const role = payload.role;
+    // Decode JWT to get role
+    const payload = JSON.parse(atob(token.split(".")[1]));
+    const role = payload.role;
 
-      if (role === "customer") {
-        navigate("/user-dashboard");
-      } else if (role === "provider") {
-        navigate("/vendor-dashboard");
-      }
+    if (role === "customer") {
+      navigate("/user-dashboard");
 
-    } catch (err) {
-      alert("Invalid credentials");
+    } else if (role === "provider") {
+
+  if (payload.is_approved) {
+    navigate("/vendor-dashboard");
+
+  } else {
+    navigate("/vendor-verification");
+  }
+
+
+    } else if (role === "admin") {
+
+      // 🔥 OPTION 1 (If admin panel separate React app)
+      window.location.href = "http://localhost:3001";
+
+      // 🔥 OPTION 2 (If admin inside same frontend)
+      // navigate("/admin-dashboard");
     }
-  };
+
+  } catch (err) {
+    alert("Invalid credentials");
+  }
+};
 
   return (
     <div className="login-container">

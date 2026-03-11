@@ -1,68 +1,71 @@
 const express = require("express");
 const router = express.Router();
 
-// Import controller functions
-const {
-  createProviderProfile,
-  addSkillToProvider,
-  getProvidersBySkill,
-  getProviderRating
-} = require("../controllers/providerController");
+const { verifyToken } = require("../middleware/authMiddleware");
+const pool = require("../config/db");
 
-// Import middleware
-const { verifyToken, authorizeRole } = require("../middleware/authMiddleware");
+// ==========================
+// CREATE PROVIDER PROFILE
+// ==========================
 
+router.post("/create-profile", verifyToken, async (req, res) => {
 
-/*
---------------------------------------------------
-1️⃣ Create Provider Profile
-Only provider role allowed
---------------------------------------------------
-*/
-router.post(
-  "/create",
-  verifyToken,
-  authorizeRole("provider"),
-  createProviderProfile
+const {experience, location, availability_status, description, skill_id, price, duration} = req.body;
+
+try {
+
+const profile = await pool.query(
+`INSERT INTO provider_profile
+(user_id, experience, location, availability_status, verification_status, description)
+VALUES ($1,$2,$3,$4,'pending',$5)
+RETURNING provider_id`,
+[
+req.user.id,
+experience,
+location,
+availability_status,
+description
+]
 );
 
+const provider_id = profile.rows[0].provider_id;
 
-/*
---------------------------------------------------
-2️⃣ Add Skill To Provider
-Only provider role allowed
---------------------------------------------------
-*/
-router.post(
-  "/add-skill",
-  verifyToken,
-  authorizeRole("provider"),
-  addSkillToProvider
+await pool.query(
+`INSERT INTO provider_skills
+(provider_id, skill_id, price, duration)
+VALUES ($1,$2,$3,$4)`,
+[
+provider_id,
+skill_id,
+price,
+duration
+]
 );
 
+res.json({message:"Profile created successfully"});
 
-/*
---------------------------------------------------
-3️⃣ Get Providers By Skill
-Public route (no login required)
---------------------------------------------------
-*/
-router.get(
-  "/skill/:skill_id",
-  getProvidersBySkill
-);
+} catch(err){
+console.log(err);
+res.status(500).json({message:"Server error"});
+}
 
+});
 
-/*
---------------------------------------------------
-4️⃣ Get Provider Rating
-Public route
---------------------------------------------------
-*/
-router.get(
-  "/rating/:provider_id",
-  getProviderRating
-);
+router.get("/skills", async (req, res) => {
+  try {
 
+    const result = await pool.query(
+      `SELECT skill_id, skill_name 
+       FROM skills
+       WHERE status = true
+       ORDER BY skill_name`
+    );
 
+    res.json(result.rows);
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Error fetching skills" });
+  }
+});
 module.exports = router;

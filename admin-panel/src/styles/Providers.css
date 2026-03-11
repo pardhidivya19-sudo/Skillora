@@ -1,0 +1,113 @@
+/* ===== Container ===== */
+.providers-container {
+  padding: 20px;
+}
+
+/* Header */
+.providers-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.providers-header h2 {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.providers-header input {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  width: 250px;
+}
+
+/* ===== Cards Layout ===== */
+
+.providers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.provider-card {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.2s ease;
+}
+
+.provider-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Left Section */
+.provider-left h3 {
+  margin-bottom: 6px;
+  font-size: 20px;
+}
+
+.category {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+.applied-date {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+/* Status Badge */
+.status-badge {
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Approved */
+.status-badge.approved {
+  background: #e6f9f0;
+  color: #1aa053;
+}
+
+/* Pending */
+.status-badge.pending {
+  background: #fff4e5;
+  color: #f39c12;
+}
+
+/* Rejected */
+.status-badge.rejected {
+  background: #fdecea;
+  color: #e74c3c;
+}
+
+/* Right Section */
+.provider-right {
+  display: flex;
+  align-items: center;
+}
+
+/* View Button */
+.view-btn {
+  background: linear-gradient(135deg, #5f3dc4, #3b5bdb);
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.view-btn:hover {
+  transform: translateY(-2px);
+}

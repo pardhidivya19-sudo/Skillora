@@ -11,18 +11,11 @@ app.use(express.json());
 const authRoutes = require("./routes/authRoutes");
 app.use("/api/auth", authRoutes);
 
-const bookingRoutes = require("./routes/bookingRoutes");
-app.use("/api/bookings", bookingRoutes);
-
-const paymentRoutes = require("./routes/paymentRoutes");
-app.use("/api/payments", paymentRoutes);
-
-const reviewRoutes = require("./routes/reviewRoutes");
-app.use("/api/reviews", reviewRoutes);
+const adminRoutes = require("./routes/adminRoutes");
+app.use("/api/admin", adminRoutes);
 
 const providerRoutes = require("./routes/providerRoutes");
-app.use("/api/providers", providerRoutes);
-
+app.use("/api/provider", providerRoutes);
 
 
 // Protected test route
