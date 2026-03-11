@@ -1,0 +1,77 @@
+.navbar{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background: #E8E2E3;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-container{
+  width: 95%;
+  max-width: 1400px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LOGO */
+
+.nav-logo{
+  font-size: 34px;
+  font-weight: 700;
+  background: linear-gradient(90deg,#7C6BFF,#FF6A6A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* NAV LINKS */
+
+.nav-links{
+  list-style: none;
+  display: flex;
+  gap: 42px;
+}
+
+.nav-links a{
+  text-decoration: none;
+  font-size: 18px;
+  color: #6b6b6b;
+  font-weight: 500;
+}
+
+.nav-links a:hover{
+  color:#6C63FF;
+}
+
+/* RIGHT SIDE */
+
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
+
+.nav-icon{
+  font-size:22px;
+  color:#555;
+  cursor:pointer;
+}
+
+/* SIGN IN BUTTON */
+
+.nav-signin-btn{
+  padding:12px 26px;
+  border:none;
+  border-radius:16px;
+  background:linear-gradient(90deg,#6C63FF,#7B7BFF);
+  color:white;
+  font-size:16px;
+  font-weight:500;
+  cursor:pointer;
+}
+.navbar{
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}

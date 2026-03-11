@@ -1,0 +1,105 @@
+.test-section{
+padding:10px 0;
+background:#f5f6fb;
+}
+
+.test-container{
+max-width:1300px;
+margin:auto;
+padding:0 20px;
+}
+
+/* TITLE */
+.test-title{
+font-family:'Playfair Display', serif;
+font-size:48px;
+font-weight:700;
+text-align:center;
+color:#1d1d1f;
+margin-bottom:10px;
+}
+
+.test-subtitle{
+text-align:center;
+font-size:18px;
+color:#6b7280;
+margin-bottom:10px;
+}
+
+/* GRID */
+.test-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+}
+
+/* CARD */
+.test-card{
+background:white;
+padding:10px 16px;
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,0.05);
+transition:0.3s;
+width: 240px;
+height: 250px;
+}
+
+.test-card:hover{
+transform:translateY(-4px);
+box-shadow:0 14px 35px rgba(0,0,0,0.1);
+}
+
+/* TOP */
+.test-top{
+display:flex;
+align-items:flex-start;
+gap:12px;
+margin-bottom:15px;
+}
+
+/* IMAGE */
+.test-top img{
+width:45px;
+height:45px;
+border-radius:50%;
+object-fit:cover;
+}
+
+/* USER */
+.test-user{
+flex:1;
+}
+
+.test-user h4{
+font-family:'Playfair Display', serif;
+font-size:18px;
+margin-bottom:2px;
+}
+
+.test-user p{
+font-size:14px;
+color:#6b7280;
+}
+
+/* STARS */
+
+.test-stars{
+display:flex;
+gap:2px;
+}
+
+.star{
+color:#d1d5db;
+font-size:16px;
+}
+
+.star.active{
+color:#f59e0b;
+}
+
+/* REVIEW */
+.test-review{
+font-size:15px;
+color:#4b5563;
+line-height:1.6;
+}
