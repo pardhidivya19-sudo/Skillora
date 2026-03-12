@@ -12,89 +12,77 @@
 }
 
 /* TITLE */
-
 .categories-title{
-  font-size:48px;
+  font-family:'Times New Roman', Times, serif;
+  font-size:56px;
   font-weight:800;
   color:#1e1e2f;
+  margin-bottom: 0px;
 }
 
 .categories-subtitle{
-  margin-top:10px;
+  margin-top:2px;
   color:#6b7280;
   font-size:18px;
 }
 
 /* GRID */
-
 .categories-grid{
   margin-top:60px;
-
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:30px;
 }
 
 /* CARD */
-
 .category-card{
   background:white;
   border-radius:20px;
   padding:40px 20px;
-
   text-align:center;
-
   transition:0.3s;
   cursor:pointer;
+  width:auto;
+  height:120px;
 }
 
 /* HOVER */
-
 .category-card:hover{
   transform:translateY(-6px);
   box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
 /* ICON BOX */
-
 .category-icon{
   width:70px;
   height:70px;
-
   margin:auto;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   border-radius:16px;
-
   background:#e9e9fb;
   color:#5a54f9;
-
   font-size:30px;
-
-  margin-bottom:20px;
-
   transition:0.3s;
 }
 
 /* ICON HOVER */
-
 .category-card:hover .category-icon{
   background:linear-gradient(135deg,#6C63FF,#7B7BFF);
   color:white;
 }
 
 /* TEXT */
-
 .category-card h3{
   font-size:20px;
   font-weight:600;
   margin-bottom:6px;
+  margin-top: 12px;
 }
 
 .category-card p{
   color:#6b7280;
   font-size:15px;
+  margin-top: 0px;
 }

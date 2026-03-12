@@ -4,6 +4,7 @@ import PopularServices from "./PopularServices";
 import HowWorks from "./HowWorks";
 import TopProfessionals from "./TopProfessionals";
 import Testimonials from "./Testimonials";
+import CTASection from "./CTASection";
 
 function Home() {
   return (
@@ -14,6 +15,7 @@ function Home() {
       <HowWorks/>
       <TopProfessionals/>
       <Testimonials/>
+      <CTASection/>
     </>
   );
 }

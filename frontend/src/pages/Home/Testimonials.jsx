@@ -1,5 +1,5 @@
 import "./Testimonials.css";
-import { FiStar } from "react-icons/fi";
+import { FaStar } from "react-icons/fa";
 
 import user1 from "../../assets/images/pro1.png";
 import user2 from "../../assets/images/pro2.png";
@@ -7,7 +7,6 @@ import user3 from "../../assets/images/pro3.png";
 import user4 from "../../assets/images/pro1.png";
 
 const testimonials = [
-
 {
 id:1,
 name:"Priya Sharma",
@@ -47,13 +46,9 @@ review:"The electrician was prompt and efficient. Fixed all the wiring issues an
 ];
 
 function Testimonials(){
-
 return(
-
 <section className="test-section">
-
 <div className="test-container">
-
 <h2 className="test-title">
 What Our Customers Say
 </h2>
@@ -62,57 +57,38 @@ What Our Customers Say
 Real reviews from real customers
 </p>
 
-
 <div className="test-grid">
-
 {testimonials.map((t)=> (
-
 <div className="test-card" key={t.id}>
-
 <div className="test-top">
 
 <img src={t.image} alt={t.name} />
-
 <div className="test-user">
-
 <h4>{t.name}</h4>
-
 <p>{t.service}</p>
 
 </div>
-
 <div className="test-stars">
-
 {[...Array(5)].map((_,i)=> (
 
-<FiStar
+<FaStar
 key={i}
 className={i < t.rating ? "star active" : "star"}
 />
 
 ))}
-
 </div>
-
 </div>
-
 
 <p className="test-review">
 {t.review}
 </p>
 
 </div>
-
 ))}
-
 </div>
-
 </div>
-
 </section>
-
-)
-
-}
+)}
 
 export default Testimonials;

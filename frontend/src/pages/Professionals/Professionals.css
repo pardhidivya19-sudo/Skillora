@@ -1,0 +1,158 @@
+.professionals-section{
+padding:20px 20px;
+background:#f6f7f9;
+}
+
+.professionals-title{
+font-size:48px;
+font-family:'Times New Roman', serif;
+margin-bottom:8px;
+}
+
+.professionals-subtitle{
+color:#64748b;
+font-size:18px;
+margin-bottom:30px;
+}
+
+
+/* SEARCH */
+.professionals-search{
+display:flex;
+align-items:center;
+background:white;
+padding:12px 16px;
+border-radius:12px;
+margin-bottom:40px;
+gap:10px;
+}
+
+.professionals-search input{
+flex:1;
+border:none;
+outline:none;
+font-size:16px;
+}
+
+.professionals-search button{
+background:linear-gradient(90deg,#7C6BFF,#FF6A6A);
+color:white;
+border:none;
+padding:10px 22px;
+border-radius:10px;
+cursor:pointer;
+}
+
+/* GRID */
+.professionals-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+}
+
+/* CARD */
+.professional-card{
+background:white;
+padding:10px 20px;
+border-radius:18px;
+box-shadow:0 8px 25px rgba(0,0,0,0.06);
+transition:0.3s;
+}
+
+.professional-card:hover{
+transform:translateY(-4px);
+box-shadow:0 14px 30px rgba(0,0,0,0.12);
+}
+
+
+/* TOP */
+.professional-top{
+display:flex;
+gap:18px;
+align-items:center;
+}
+
+.professionals-image{
+position:relative;
+}
+
+.professionals-image img{
+width:70px;
+height:70px;
+border-radius:16px;
+object-fit:cover;
+}
+
+.professionals-verified{
+position:absolute;
+right:-3px;
+bottom:-3px;
+color:#2f8f7f;
+background:white;
+border-radius:50%;
+font-size:18px;
+}
+
+/* INFO */
+.professionals-info h3{
+font-family:'Times New Roman', Times, serif;
+font-size:22px;
+margin-bottom:0px;
+margin-top: 0px;
+}
+
+.professionals-role{
+color:#64748b;
+font-size:16px;
+margin-bottom:0px;
+margin-top: 0px;
+}
+
+.professionals-meta{
+display:flex;
+gap: 16px;
+font-size:15px;
+}
+
+.professionals-rating{
+color:#f59e0b;
+display:flex;
+align-items:center;
+gap:4px;
+}
+
+.professionals-reviews{
+color:#64748b;
+}
+
+.professionals-location{
+display:flex;
+align-items:center;
+gap:4px;
+color:#64748b;
+}
+
+/* DIVIDER */
+.professionals-divider{
+height:1px;
+background:#e2e8f0;
+margin:18px 0;
+margin-bottom: 6px;
+}
+
+/* BOTTOM */
+.professional-bottom{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.professionals-book-btn{
+font-size:16px;
+background:linear-gradient(90deg,#7C6BFF,#FF6A6A);
+border:none;
+padding:10px 22px;
+color:white;
+border-radius:10px;
+cursor:pointer;
+}

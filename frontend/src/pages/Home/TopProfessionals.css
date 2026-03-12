@@ -10,12 +10,11 @@ padding:0 20px;
 }
 
 /* HEADER */
-
 .tp-header{
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin-bottom:  10px;
+margin-bottom: 10px;
 }
 
 .tp-header h2{
@@ -39,7 +38,6 @@ cursor:pointer;
 }
 
 /* GRID */
-
 .tp-grid{
 display:grid;
 grid-template-columns:repeat(3,1fr);
@@ -91,7 +89,7 @@ font-size:18px;
 
 /* INFO */
 .tp-info h3{
-font-family:'Playfair Display', serif;
+font-family:'Times New Roman', Times, serif;
 font-size:22px;
 margin-bottom:4px;
 }
@@ -150,7 +148,7 @@ margin-bottom: 5px;
 }
 
 .tp-btn{
-background:#2f8f7f;
+background:linear-gradient(90deg,#7C6BFF,#FF6A6A);
 color:white;
 border:none;
 padding:10px 22px;
@@ -161,5 +159,5 @@ transition:0.3s;
 }
 
 .tp-btn:hover{
-background:#26786a;
+background:linear-gradient(90deg,#7C6BFF,#FF6A6A);
 }

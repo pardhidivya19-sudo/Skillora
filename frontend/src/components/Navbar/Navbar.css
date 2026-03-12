@@ -20,6 +20,7 @@
 /* LOGO */
 
 .nav-logo{
+  font-family: 'Times New Roman', Times, serif;
   font-size: 34px;
   font-weight: 700;
   background: linear-gradient(90deg,#7C6BFF,#FF6A6A);

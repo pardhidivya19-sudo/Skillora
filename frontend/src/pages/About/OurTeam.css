@@ -1,0 +1,57 @@
+.team-section{
+padding:80px 40px;
+background:#f6f7f9;
+text-align:center;
+}
+
+.team-title{
+font-family:'Times New Roman', serif;
+font-size:44px;
+margin-bottom:60px;
+}
+
+
+/* GRID */
+.team-grid{
+max-width:1100px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:60px;
+}
+
+
+/* CARD */
+.team-card{
+text-align:center;
+}
+
+
+/* IMAGE */
+.team-image{
+width:120px;
+height:120px;
+margin:0 auto 18px auto;
+border-radius:24px;
+overflow:hidden;
+}
+
+.team-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+
+/* TEXT */
+.team-card h3{
+font-family: 'Times New Roman', Times, serif;
+font-size:22px;
+margin-bottom:0px;
+}
+
+.team-card p{
+color:#64748b;
+font-size:16px;
+margin-top: 0px;
+}
