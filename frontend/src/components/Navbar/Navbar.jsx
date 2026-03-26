@@ -21,12 +21,19 @@ function Navbar() {
         </ul>
 
         <div className="nav-right">
-          <FiHeart className="nav-icon"/>
-          <FiUser className="nav-icon"/>
+          <Link to="/wishlist">
+<FiHeart className="nav-icon"/>
+</Link>
+          
+           <Link to="/account">
+            <FiUser className="nav-icon"/>
+          </Link>
 
-          <button className="nav-signin-btn">
-            Sign In
-          </button>
+          <Link to="/auth">
+            <button className="nav-signin-btn">
+              Sign In
+            </button>
+          </Link>
         </div>
 
       </div>

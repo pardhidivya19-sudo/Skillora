@@ -1,6 +1,6 @@
 .cta-section{
   /* width:100%; */
-  padding:50px 40px;
+  padding:50px 40px 80px 40px;
   background: linear-gradient(90deg, #7C6BFF, #FF6A6A);
   color:rgb(243, 238, 238);
 }

@@ -29,6 +29,7 @@
   line-height:1.1;
   color:white;
   margin-top:30px;
+  margin-bottom: 0px;
 }
 
 .hero-title span{
@@ -44,9 +45,8 @@
 }
 
 /* TEXT */
-
 .hero-text{
-  margin-top:20px;
+  margin-top:10px;
   font-size:20px;
   color:#d9d9d9;
   max-width:550px;
@@ -61,11 +61,12 @@
   background:white;
   border-radius:16px;
   overflow:hidden;
-  width:600px;
+  width: 600px;
+  height: 60px;
+  padding:0px 0px 0px 10px;
 }
 
 /* INPUTS */
-
 .search-input,
 .location-input{
   display:flex;
@@ -89,9 +90,8 @@
 }
 
 /* BUTTON */
-
 .search-btn{
-  background:linear-gradient(90deg,#6C63FF,#7B7BFF);
+  background: linear-gradient(90deg, #7C6BFF, #FF6A6A);
   border:none;
   padding:12px 28px;
   color:white;
@@ -102,7 +102,6 @@
 }
 
 /* USERS */
-
 .hero-users{
   margin-top:25px;
   display:flex;
@@ -119,7 +118,7 @@
   height:38px;
   border-radius:50%;
   border:3px solid white;
-  margin-left:-10px;
+  margin-left:-5px;
 }
 
 .hero-users p{

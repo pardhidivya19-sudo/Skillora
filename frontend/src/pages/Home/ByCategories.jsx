@@ -1,59 +1,95 @@
 import "./ByCategories.css";
-import { 
-  FiStar, 
-  FiTool, 
-  FiDroplet, 
-  FiScissors, 
-  FiTruck, 
-  FiZap, 
-  FiHeart, 
-  FiShield 
-} from "react-icons/fi";
-
-function ByCategories() {
+import {
+Sparkles,
+Wrench,
+Zap,
+Scissors,
+Settings,
+Paintbrush
+} from "lucide-react";
 
 const categories = [
-  { icon: <FiStar />, name: "Cleaning", services: "48 services" },
-  { icon: <FiTool />, name: "Plumbing", services: "32 services" },
-  { icon: <FiDroplet />, name: "Painting", services: "24 services" },
-  { icon: <FiScissors />, name: "Beauty", services: "56 services" },
-  { icon: <FiTruck />, name: "Moving", services: "18 services" },
-  { icon: <FiZap />, name: "Electrical", services: "29 services" },
-  { icon: <FiHeart />, name: "Wellness", services: "41 services" },
-  { icon: <FiShield />, name: "Security", services: "15 services" },
+{
+id:1,
+title:"Home Cleaning",
+services:"24 services",
+icon:<Sparkles size={28}/>
+},
+{
+id:2,
+title:"Plumbing",
+services:"18 services",
+icon:<Wrench size={28}/>
+},
+{
+id:3,
+title:"Electrical",
+services:"15 services",
+icon:<Zap size={28}/>
+},
+{
+id:4,
+title:"Beauty & Spa",
+services:"32 services",
+icon:<Scissors size={28}/>
+},
+{
+id:5,
+title:"Appliance Repair",
+services:"21 services",
+icon:<Settings size={28}/>
+},
+{
+id:6,
+title:"Painting",
+services:"12 services",
+icon:<Paintbrush size={28}/>
+}
 ];
-  return (
-    <section className="categories">
 
-      <div className="categories-container">
+function ByCategories(){
 
-        <h2 className="categories-title">Browse by Category</h2>
+return(
 
-        <p className="categories-subtitle">
-          Explore our wide range of professional home and personal services.
-        </p>
+<section className="cat-section">
 
-        <div className="categories-grid">
+<div className="cat-container">
 
-          {categories.map((cat, index) => (
-            <div className="category-card" key={index}>
+<h2 className="cat-title">
+Browse Categories
+</h2>
 
-              <div className="category-icon">
-                {cat.icon}
-              </div>
+<p className="cat-subtitle">
+Find the perfect service from our curated categories
+</p>
 
-              <h3>{cat.name}</h3>
-              <p>{cat.services}</p>
 
-            </div>
-          ))}
+<div className="cat-grid">
 
-        </div>
+{categories.map((cat)=>(
 
-      </div>
+<div className="cat-card" key={cat.id}>
 
-    </section>
-  );
+<div className="cat-icon">
+{cat.icon}
+</div>
+
+<h3>{cat.title}</h3>
+
+<p>{cat.services}</p>
+
+</div>
+
+))}
+
+</div>
+
+</div>
+
+</section>
+
+)
+
 }
 
 export default ByCategories;

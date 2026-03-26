@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./OurServices.css";
 import servicesData from "../../data/servicesData";
 import { FiSearch, FiHeart, FiClock } from "react-icons/fi";
@@ -17,6 +18,7 @@ const categories = [
 const OurServices = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
 
   const [liked, setLiked] = useState({});
   const toggleLike = (id) => {
@@ -75,7 +77,11 @@ const OurServices = () => {
       {/* Cards */}
       <div className="services-grid">
         {filteredServices.map((service) => (
-          <div className="service-card" key={service.id}>
+          <div
+  className="service-card"
+  key={service.id}
+  onClick={() => navigate(`/services/${service.slug}`)}
+>
 
             <div className="service-image">
               <img src={service.image} alt={service.title} />
