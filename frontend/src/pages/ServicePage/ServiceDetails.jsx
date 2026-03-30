@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import servicesData from "../../data/servicesData";
 import "./ServiceDetails.css";
 
@@ -12,6 +12,7 @@ import { FiClock } from "react-icons/fi";
 const ServiceDetails = () => {
 
   const { slug } = useParams();
+  const navigate = useNavigate();
 
   const service = servicesData.find(
     (s) => s.slug === slug
@@ -36,9 +37,12 @@ const ServiceDetails = () => {
 
           <h2>₹{service.price}</h2>
 
-          <button className="book-btn">
-            Book Now
-          </button>
+          <button 
+  className="book-btn"
+  onClick={() => navigate(`/services/${slug}/book`)}
+>
+  Book Now
+</button>
 
           <ul>
             <li>100% money-back guarantee</li>
@@ -101,7 +105,9 @@ const ServiceDetails = () => {
               <li>2 hour duration</li>
             </ul>
 
-            <button>Select</button>
+            <button onClick={() => navigate(`/services/${slug}/book`)}>
+  Select
+</button>
           </div>
 
           <div className="package popular">
@@ -117,7 +123,9 @@ const ServiceDetails = () => {
               <li>Free re-service</li>
             </ul>
 
-            <button>Select</button>
+            <button onClick={() => navigate(`/services/${slug}/book`)}>
+  Select
+</button>
 
           </div>
 
@@ -132,7 +140,9 @@ const ServiceDetails = () => {
               <li>Free re-service</li>
             </ul>
 
-            <button>Select</button>
+            <button onClick={() => navigate(`/services/${slug}/book`)}>
+  Select
+</button>
 
           </div>
 
@@ -145,7 +155,7 @@ const ServiceDetails = () => {
 
       <TopProfessionals />
 
-      <Testimonials />
+      {/* <Testimonials /> */}
 
     </section>
   );

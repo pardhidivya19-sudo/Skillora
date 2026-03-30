@@ -64,7 +64,7 @@ const AccountPage = () => {
       <div className="account-content">
 
         {activeTab==="upcoming" && (
-          <div className="booking-card">
+          <div className="account-booking-card">
             <img src="/images/cleaning.jpg"/>
             <div>
               <h3>Deep Home Cleaning</h3>
@@ -72,14 +72,14 @@ const AccountPage = () => {
               <span>Tomorrow • 10:00 AM • 123 Main St</span>
             </div>
 
-            <div className="status">
+            <div className="account-status">
               Scheduled
             </div>
           </div>
         )}
 
         {activeTab==="past" && (
-          <div className="booking-card">
+          <div className="account-booking-card">
             <img src="/images/electrical.jpg"/>
             <div>
               <h3>Electrical Wiring & Repair</h3>
@@ -87,7 +87,7 @@ const AccountPage = () => {
               <span>Completed on March 5, 2026</span>
             </div>
 
-            <button className="rebook">
+            <button className="account-rebook">
               Rebook
             </button>
           </div>
@@ -96,14 +96,14 @@ const AccountPage = () => {
         {activeTab==="saved" && (
           <div className="saved-grid">
 
-            <div className="service-card">
+            <div className="account-service-card">
               <img src="/images/cleaning.jpg"/>
               <h3>Deep Home Cleaning</h3>
               <p>$89</p>
               <button>View Details</button>
             </div>
 
-            <div className="service-card">
+            <div className="account-service-card">
               <img src="/images/plumbing.jpg"/>
               <h3>Plumbing Repair</h3>
               <p>$65</p>
@@ -114,7 +114,7 @@ const AccountPage = () => {
         )}
 
         {activeTab==="payments" && (
-          <table className="payment-table">
+          <table className="account-payment-table">
             <thead>
               <tr>
                 <th>Service</th>
@@ -129,14 +129,14 @@ const AccountPage = () => {
                 <td>Deep Home Cleaning</td>
                 <td>Mar 1, 2026</td>
                 <td>$89</td>
-                <td className="paid">Paid</td>
+                <td className="account-paid">Paid</td>
               </tr>
             </tbody>
           </table>
         )}
 
         {activeTab==="profile" && (
-          <div className="profile-form">
+          <div className="account-profile-form">
 
             <input placeholder="Enter full name"/>
             <input placeholder="Enter email"/>

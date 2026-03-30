@@ -1,0 +1,194 @@
+.book-service-container {
+  display: flex;
+  padding: 30px 100px;
+  background: #f8f8f8;
+  /* min-height: 100vh; */
+   max-width: 1100px; 
+  font-family: "Poppins", sans-serif;
+    gap: 20px;
+}
+
+/* LEFT */
+.book-service-left {
+  flex: 2;
+}
+
+.book-service-back {
+  color: #555;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.book-service-title {
+  font-size: 40px;
+  margin-bottom: 30px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* STEPS */
+.book-service-steps {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.book-service-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #888;
+}
+
+.book-service-step span {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.book-service-step.active span {
+  background: linear-gradient(90deg, #7b61ff, #ff6f91);
+  color: white;
+}
+
+.book-service-line {
+  height: 2px;
+  width: 200px;
+  background: #ddd;
+  margin: 0 15px;
+}
+
+/* SECTION */
+.book-service-section {
+  margin-bottom: 30px;
+}
+
+.book-service-section h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* DATE */
+.book-service-date-grid {
+  display: flex;
+  gap: 15px;
+}
+
+.book-service-date-card {
+  background: #eee;
+  padding: 5px 5px 5px 5px;
+  border-radius: 12px;
+  text-align: center;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+}
+
+
+.book-service-date-card p{
+  margin: 8px;
+}
+
+.book-service-date-card h3 {
+  font-size: 22px;
+  margin: 0px;
+}
+
+.book-service-date-card.selected {
+  background: linear-gradient(90deg, #7b61ff, #ff6f91);
+  color: white;
+}
+
+/* TIME */
+.book-service-time-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.book-service-time-card {
+  background: #eee;
+  padding: 12px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.book-service-time-card.selected {
+  background: linear-gradient(90deg, #7b61ff, #ff6f91);
+  color: white;
+}
+
+/* BUTTON */
+.book-service-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 18px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #7b61ff, #ff6f91);
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.book-service-btn:disabled {
+  background: #cfcfcf !important;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+
+/* RIGHT */
+.book-service-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee; /* 👈 line add */
+  font-size: 14px;
+  margin: 0px;
+}
+
+.book-service-summary {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  width: 300px;
+  height: 440px;
+  margin-top: 180px;
+}
+
+.book-service-summary h2{
+  margin:0px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.book-service-summary img {
+  width: 100%;
+  border-radius: 15px;
+  margin: 5px 0;
+}
+
+.book-service-summary h3 {
+  margin: 5px 0;
+}
+
+.book-service-summary p {
+  color: gray;
+   margin: 0px;
+}
+
+.book-service-summary hr {
+  margin: 15px 0;
+}
+
+.book-service-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}

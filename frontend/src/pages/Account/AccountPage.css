@@ -44,7 +44,7 @@ background:linear-gradient(90deg,#7C6BFF,#FF6A6A);
 color:white;
 }
 
-.booking-card{
+.account-booking-card{
 display:flex;
 align-items:center;
 justify-content:space-between;
@@ -54,36 +54,36 @@ border-radius:15px;
 margin-bottom:20px;
 }
 
-.booking-card img{
+.account-booking-card img{
 width:120px;
 border-radius:12px;
 }
 
-.status{
+.account-status{
 padding:8px 15px;
 border-radius:20px;
 background:#e6f5ee;
 color:#0b8f5c;
 }
 
-.saved-grid{
+.account-saved-grid{
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:25px;
 }
 
-.service-card{
+.account-service-card{
 background:white;
 padding:20px;
 border-radius:15px;
 }
 
-.service-card img{
+.account-service-card img{
 width:100%;
 border-radius:12px;
 }
 
-.service-card button{
+.account-service-card button{
 margin-top:10px;
 width:100%;
 padding:12px;
@@ -93,34 +93,34 @@ color:white;
 background:linear-gradient(90deg,#7C6BFF,#FF6A6A);
 }
 
-.payment-table{
+.account-payment-table{
 width:100%;
 background:white;
 border-radius:15px;
 overflow:hidden;
 }
 
-.payment-table th,
-.payment-table td{
+.account-payment-table th,
+.account-payment-table td{
 padding:15px;
 text-align:left;
 border-bottom:1px solid #eee;
 }
 
-.paid{
+.account-paid{
 background:#e6f5ee;
 padding:6px 12px;
 border-radius:20px;
 }
 
-.profile-form{
+.account-profile-form{
 display:flex;
 flex-direction:column;
 gap:15px;
 width:400px;
 }
 
-.profile-form input{
+.account-profile-form input{
 padding:14px;
 border-radius:10px;
 border:1px solid #ddd;

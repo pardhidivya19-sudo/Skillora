@@ -5,8 +5,13 @@ import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 
 import Home from "./pages/Home/Home";
+
+//service pages
 import OurServices from "./pages/ServicePage/OurServices";
 import ServiceDetails from "./pages/ServicePage/ServiceDetails";
+import BookService from "./pages/ServicePage/BookService";
+import AddressPage from "./pages/ServicePage/AddressPage";
+import SuccessPage from "./pages/ServicePage/SuccessPage";
 
 import Professionals from "./pages/Professionals/Professionals";
 import About from "./pages/About/About";
@@ -30,6 +35,9 @@ function Layout() {
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<OurServices />} />
          <Route path="/services/:slug" element={<ServiceDetails />} />
+          <Route path="/services/:slug/book" element={<BookService />} />
+          <Route path="/services/:slug/book/address" element={<AddressPage />} />
+          <Route path="/services/:slug/book/success" element={<SuccessPage />} />
 
         <Route path="/professionals" element={<Professionals />} />
         <Route path="/about" element={<About />} />
