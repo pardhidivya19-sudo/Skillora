@@ -1,0 +1,148 @@
+.add-service-container {
+  padding: 30px;
+}
+
+.add-service-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* FORM */
+.service-form {
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  max-width: 600px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* SECTION TITLE */
+.form-section {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* INPUT */
+.input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+.input:focus {
+  border-color: #6366f1;
+  outline: none;
+}
+
+/* GRID */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;   /* 🔥 horizontal gap */
+  row-gap: 15px;      /* vertical gap */
+}
+
+/* IMPORTANT */
+.form-grid .input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* TEXTAREA */
+textarea.input {
+  min-height: 80px;
+}
+
+/* FILE */
+.file-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* BUTTON */
+.primary-btn {
+  background: linear-gradient(to right, #6366f1, #4f46e5);
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.primary-btn:hover {
+  opacity: 0.9;
+}
+
+.secondary-btn {
+  background: #e5e7eb;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+/* NEW SKILL */
+.new-skill-box {
+  background: #f8fafc;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* FILE UPLOAD */
+.file-label {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* HIDE ORIGINAL INPUT */
+.custom-file input {
+  display: none;
+}
+
+/* CUSTOM BUTTON */
+.custom-file {
+  background: #f1f5f9;
+  padding: 12px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  border: 2px dashed #cbd5f5;
+  transition: 0.2s;
+}
+
+.custom-file:hover {
+  background: #eef2ff;
+  border-color: #6366f1;
+}
+
+/* TEXT */
+.custom-file span {
+  font-size: 14px;
+  color: #4f46e5;
+  font-weight: 500;
+}
+
+/* FILE NAME */
+.file-name {
+  font-size: 12px;
+  color: #16a34a;
+  margin-top: 5px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}

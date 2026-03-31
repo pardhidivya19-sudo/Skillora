@@ -10,6 +10,8 @@ const ProviderDetails = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showRejectModal, setShowRejectModal] = useState(false);
+const [rejectReason, setRejectReason] = useState("");
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -43,9 +45,8 @@ const handleAccept = async () => {
   window.location.reload();
 };
 
-const handleReject = async () => {
-  await API.put(`/reject-provider/${id}`);
-  window.location.reload();
+const handleReject = () => {
+  setShowRejectModal(true);
 };
 
 const handleBlock = async () => {
@@ -58,6 +59,31 @@ const handleDelete = async () => {
 
   await API.delete(`/delete-provider/${id}`);
   navigate("/providers");
+};
+
+const submitReject = async () => {
+
+  if (!rejectReason.trim()) {
+    alert("Please enter rejection reason");
+    return;
+  }
+
+  try {
+
+    await API.put(`/reject-provider/${id}`, {
+      reason: rejectReason
+    });
+
+    setShowRejectModal(false);
+    window.location.reload();
+
+  } catch (err) {
+
+    console.error(err);
+    alert("Reject failed");
+
+  }
+
 };
 
   return (
@@ -187,6 +213,75 @@ Verification: {profile?.verification_status || "Pending"}
           )}
         </div>
 
+
+{/* DOCUMENT */}
+<div className="card">
+  <h3>Verification Document</h3>
+
+  {profile?.document ? (
+    <>
+      <a
+href={
+profile.document.endsWith(".pdf")
+? profile.document
+: `https://docs.google.com/gview?url=${encodeURIComponent(profile.document)}&embedded=true`
+}
+target="_blank"
+rel="noopener noreferrer"
+className="view-doc-btn"
+>
+View Document
+</a>
+
+      <br /><br />
+
+      <a
+href={profile.document}
+download={profile.document_name}
+className="download-doc-btn"
+>
+Download Document
+</a>
+    </>
+  ) : (
+    <p>No document uploaded</p>
+  )}
+</div>
+{showRejectModal && (
+  <div className="reject-modal-overlay">
+
+    <div className="reject-modal">
+
+      <h3>Reject Provider</h3>
+
+      <textarea
+        placeholder="Enter rejection reason..."
+        value={rejectReason}
+        onChange={(e) => setRejectReason(e.target.value)}
+      />
+
+      <div className="modal-actions">
+
+        <button
+          className="cancel-btn"
+          onClick={() => setShowRejectModal(false)}
+        >
+          Cancel
+        </button>
+
+        <button
+          className="confirm-reject-btn"
+          onClick={submitReject}
+        >
+          Reject
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+)}
       </div>
     </div>
   );

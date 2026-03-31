@@ -141,37 +141,62 @@ exports.getAllProviders = async (req, res) => {
 
 // APPROVE PROVIDER
 exports.approveProvider = async (req, res) => {
+
   const { id } = req.params;
 
   try {
+
     await pool.query(
-      "UPDATE users SET approval_status = 'approved' WHERE user_id = $1",
+      `UPDATE users
+       SET approval_status = 'approved',
+       rejection_reason = NULL
+       WHERE user_id = $1`,
       [id]
     );
 
-    res.json({ message: "Provider approved" });
+    res.json({ message: "Provider approved successfully" });
+
   } catch (err) {
+
     console.error("Approve Error:", err);
     res.status(500).json({ message: "Error approving provider" });
+
   }
+
 };
 
 
 // REJECT PROVIDER
 exports.rejectProvider = async (req, res) => {
+
   const { id } = req.params;
 
+  const reason = req.body?.reason || "Rejected by admin";
+
   try {
+
     await pool.query(
-      "UPDATE users SET approval_status = 'rejected' WHERE user_id = $1",
+      `UPDATE users
+       SET approval_status='rejected',
+       rejection_reason=$1
+       WHERE user_id=$2`,
+      [reason, id]
+    );
+
+    await pool.query(
+      `DELETE FROM provider_profile WHERE user_id=$1`,
       [id]
     );
 
     res.json({ message: "Provider rejected" });
+
   } catch (err) {
-    console.error("Reject Error:", err);
+
+    console.error(err);
     res.status(500).json({ message: "Error rejecting provider" });
+
   }
+
 };
 
 
@@ -238,7 +263,8 @@ exports.getProviderDetails = async (req, res) => {
         p.location,
         p.availability_status,
         p.verification_status,
-        p.description
+        p.description,
+        p.document
  FROM users u
  LEFT JOIN provider_profile p
  ON u.user_id = p.user_id
@@ -579,10 +605,11 @@ exports.adminNotifications = async (req, res) => {
 
     const newProviders = await pool.query(`
       SELECT name, created_at
-      FROM users
-      WHERE role='provider'
-      ORDER BY created_at DESC
-      LIMIT 3
+FROM users
+WHERE role='provider'
+AND approval_status='pending'
+ORDER BY created_at DESC
+LIMIT 3
     `);
 
     const newBookings = await pool.query(`

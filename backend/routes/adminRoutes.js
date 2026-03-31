@@ -3,6 +3,7 @@ const router = express.Router();
 
 const adminController = require("../controllers/adminController");
 const { verifyToken, authorizeRole } = require("../middleware/authMiddleware");
+const pool = require("../config/db");
 
 // ==========================
 // ADMIN LOGIN
@@ -168,4 +169,60 @@ router.get(
   adminController.exportBookingsExcel
 );
 
+// ==========================
+// ADMIN: APPROVE / REJECT WITHDRAWAL
+// ==========================
+
+router.put("/transactions/:id", async (req, res) => {
+  const { status } = req.body; // completed / rejected
+
+  try {
+    await pool.query(
+      `UPDATE transactions SET status=$1 WHERE transaction_id=$2`,
+      [status, req.params.id]
+    );
+
+    res.json({ message: "Transaction updated" });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Error updating transaction" });
+  }
+});
+
+router.get("/transactions", async (req, res) => {
+  try {
+    const result = await pool.query(`
+  SELECT DISTINCT ON (t.transaction_id)
+    t.transaction_id,
+    t.amount,
+    t.status,
+    t.created_at,
+
+    u.name AS provider_name,
+    s.skill_name
+
+  FROM transactions t
+
+  JOIN provider_profile p 
+    ON t.provider_id = p.provider_id
+
+  JOIN users u 
+    ON p.user_id = u.user_id
+
+  LEFT JOIN provider_skills ps
+    ON ps.provider_id = p.provider_id
+
+  LEFT JOIN skills s
+    ON ps.skill_id = s.skill_id
+
+  ORDER BY t.transaction_id, ps.provider_skill_id
+`);
+    res.json(result.rows);
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Error fetching transactions" });
+  }
+});
 module.exports = router;

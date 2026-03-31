@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import API from "../services/api";
+import "./VendorVerification.css";
 
 function VendorVerification() {
 
@@ -15,9 +16,36 @@ function VendorVerification() {
   document:null
 });
 const [skills, setSkills] = useState([]);
+const [submitted, setSubmitted] = useState(false);
+const [status, setStatus] = useState(null);
+const [reason, setReason] = useState("");
+const [profileExists, setProfileExists] = useState(false);
 
 useEffect(() => {
   fetchSkills();
+}, []);
+
+useEffect(() => {
+
+const token = localStorage.getItem("token");
+
+if (token) {
+
+const payload = JSON.parse(atob(token.split(".")[1]));
+
+setStatus(payload.approval_status);
+setReason(payload.rejection_reason);
+// 👇 check if vendor profile exists
+API.get("/provider/my-profile").then(res => {
+
+if (res.data) {
+setProfileExists(true);
+}
+
+}).catch(()=>{});
+
+}
+
 }, []);
 
 const fetchSkills = async () => {
@@ -51,111 +79,181 @@ setForm({
 
 }
 
-  const handleSubmit = async () => {
-    try {
+ const handleSubmit = async () => {
+  try {
+    const token = localStorage.getItem("token");
 
-      const token = localStorage.getItem("token");
+    const formData = new FormData();
 
-await API.post(
-  "/provider/create-profile",
-  form,
-  {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
+    formData.append("experience", form.experience);
+    formData.append("location", form.location);
+    formData.append("availability_status", form.availability_status);
+    formData.append("description", form.description);
+    formData.append("skill_id", form.skill_id);
+    formData.append("price", form.price);
+    formData.append("duration", form.duration);
+    formData.append("document", form.document);
+
+    await API.post(
+      "/provider/create-profile",
+      formData,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data"
+        }
+      }
+    );
+
+setSubmitted(true);
+  } catch (err) {
+    alert("Error submitting profile");
   }
-);
-
-      alert("Profile submitted successfully. Waiting for admin approval.");
-
-    } catch (err) {
-      alert("Error submitting profile");
-    }
-  };
+};
 
   return (
-    <div style={{padding:"40px"}}>
+<div className="vendor-container">
 
-      <h2>Complete Your Provider Profile</h2>
+{status === "rejected" ? (
 
-      <input
-  name="experience"
-  value={form.experience}
-  placeholder="Experience (years)"
-  onChange={handleChange}
+<div className="status-box">
+
+<h2>Verification Rejected ❌</h2>
+
+<p>Your request was rejected by admin.</p>
+
+<p><b>Reason:</b> {reason}</p>
+
+<br/>
+
+<button onClick={()=>{
+setStatus(null);
+setSubmitted(false);
+}}>
+Fill Form Again
+</button>
+
+<br/><br/>
+
+<button onClick={()=>{
+window.location.href="/";
+}}>
+Cancel
+</button>
+
+</div>
+
+) : (submitted || profileExists) ? (
+
+<div style={{textAlign:"center", marginTop:"80px"}}>
+
+<h2>Request Submitted ✅</h2>
+
+<p>Your verification request has been submitted.</p>
+
+<p>Please wait for admin approval.</p>
+
+</div>
+
+) : (
+
+<>
+
+<h2>Complete Your Provider Profile</h2>
+
+<input
+className="form-input"
+name="experience"
+value={form.experience}
+placeholder="Experience (years)"
+onChange={handleChange}
 />
 
-      <br/><br/>
+<br/><br/>
 
-      <input
-  name="location"
-  value={form.location}
-  placeholder="Service Location"
-  onChange={handleChange}
+<input
+className="form-input"
+name="location"
+value={form.location}
+placeholder="Service Location"
+onChange={handleChange}
 />
 
-      <br/><br/>
+<br/><br/>
 
-      <select name="availability_status" onChange={handleChange}>
+<select name="availability_status" onChange={handleChange}>
 <option value="true">Available</option>
 <option value="false">Busy</option>
 </select>
-      <br/><br/>
 
-      <textarea
-  name="description"
-  value={form.description}
-  placeholder="Describe your services"
-  onChange={handleChange}
+<br/><br/>
+
+<textarea
+name="description"
+value={form.description}
+placeholder="Describe your services"
+onChange={handleChange}
 />
 
-      <br/><br/>
+<br/><br/>
 
 <select
-  name="skill_id"
-  value={form.skill_id}
-  onChange={handleChange}
+name="skill_id"
+value={form.skill_id}
+onChange={handleChange}
 >
-  <option value="">Select Skill</option>
- {skills.map(skill => (
+<option value="">Select Skill</option>
+{skills.map(skill => (
 <option key={skill.skill_id} value={skill.skill_id}>
 {skill.skill_name}
 </option>
 ))}
 </select>
-<br/><br/>
-
-<input
-  type="number"
-  name="price"
-  value={form.price}
-  placeholder="Service Price"
-  onChange={handleChange}
-/>
-<br/><br/>
-
-<input
-  type="number"
-  name="duration"
-  value={form.duration}
-  placeholder="Service Duration"
-  onChange={handleChange}
-/>
 
 <br/><br/>
 
 <input
-type="file"
-name="document"
+className="form-input"
+type="number"
+name="price"
+value={form.price}
+placeholder="Service Price"
 onChange={handleChange}
 />
 
-      <button onClick={handleSubmit}>
-        Submit Profile
-      </button>
+<br/><br/>
 
-    </div>
-  );
+<input
+className="form-input"
+type="number"
+name="duration"
+value={form.duration}
+placeholder="Service Duration"
+onChange={handleChange}
+/>
+
+<br/><br/>
+
+<input
+className="form-input"
+type="file"
+name="document"
+accept=".pdf,.doc,.docx"
+onChange={handleChange}
+/>
+
+<br/><br/>
+
+<button className="submit-btn" onClick={handleSubmit}>
+Submit Profile
+</button>
+
+</>
+
+)}
+
+</div>
+);
 }
 
 export default VendorVerification;

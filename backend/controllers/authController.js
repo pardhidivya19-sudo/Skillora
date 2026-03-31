@@ -54,9 +54,13 @@ const registerAfterOTP = async (req, res) => {
     delete otpStore[email];
 
     res.status(201).json(result.rows[0]);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
+  } catch (err) {
+
+  console.error("REGISTER ERROR:", err);   // 👈 ADD THIS LINE
+
+  res.status(500).json({ message: "Registration failed" });
+
+}
 };
 
 // ==================== LOGIN ====================
@@ -82,13 +86,23 @@ const login = async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials" });
     }
 
-    const token = jwt.sign(
-      { id: user.rows[0].user_id, role: user.rows[0].role },
-      process.env.JWT_SECRET,
-      { expiresIn: "1d" }
-    );
+const token = jwt.sign(
+{
+id: user.rows[0].user_id,
+name: user.rows[0].name, // ✅ ADD THIS LINE
+role: user.rows[0].role,
+approval_status: user.rows[0].approval_status,
+rejection_reason: user.rows[0].rejection_reason
+},
+process.env.JWT_SECRET,
+{ expiresIn: "1d" }
+);
 
-    res.json({ token });
+res.json({
+token,
+approval_status: user.rows[0].approval_status,
+rejection_reason: user.rows[0].rejection_reason
+});
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

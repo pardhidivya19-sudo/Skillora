@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -80,6 +81,7 @@ function Navbar() {
               onClick={() => setShowDropdown(!showDropdown)}
             >
               👤 My Profile
+              
               {showDropdown && (
                 <div className="dropdown-menu">
                   <div onClick={() => navigate("/user-dashboard")}>

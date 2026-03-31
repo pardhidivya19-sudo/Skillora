@@ -18,6 +18,8 @@ const providerRoutes = require("./routes/providerRoutes");
 app.use("/api/provider", providerRoutes);
 
 
+
+
 // Protected test route
 const { verifyToken } = require("./middleware/authMiddleware");
 

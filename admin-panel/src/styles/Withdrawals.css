@@ -1,0 +1,74 @@
+/* Container */
+.withdrawals-container {
+  padding: 20px;
+}
+
+/* Title */
+.withdrawals-title {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+/* Card */
+.withdraw-card {
+  background: #fff;
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Status */
+.withdraw-status {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: white;
+}
+
+.withdraw-status.pending {
+  background: orange;
+}
+
+.withdraw-status.completed {
+  background: green;
+}
+
+.withdraw-status.rejected {
+  background: red;
+}
+
+/* Buttons container */
+.withdraw-actions {
+  margin-top: 10px;
+}
+
+/* Approve button */
+.withdraw-approve {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  margin-right: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Reject button */
+.withdraw-reject {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Hover effects */
+.withdraw-approve:hover {
+  background: #218838;
+}
+
+.withdraw-reject:hover {
+  background: #c82333;
+}

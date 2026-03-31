@@ -70,7 +70,6 @@ useEffect(() => {
     try {
 
       const res = await API.get("/notifications");
-      console.log(res.data);
 
       const allNotifications = [
         ...res.data.providers.map(p => ({
@@ -92,7 +91,15 @@ useEffect(() => {
 
   };
 
+  // first load
   fetchNotifications();
+
+  // auto refresh every 5 seconds
+  const interval = setInterval(() => {
+    fetchNotifications();
+  }, 5000);
+
+  return () => clearInterval(interval);
 
 }, []);
 
@@ -106,6 +113,7 @@ useEffect(() => {
           <li onClick={() => navigate("/providers")}>Providers</li>
           <li onClick={() => navigate("/bookings")}>Bookings</li>
           <li onClick={() => navigate("/payments")}>Payments</li>
+          <li onClick={() => navigate("/withdrawals")}>Withdrawals</li>
         </ul>
       </div>
 

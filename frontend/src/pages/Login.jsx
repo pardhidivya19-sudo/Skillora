@@ -27,18 +27,23 @@ function Login() {
     // Decode JWT to get role
     const payload = JSON.parse(atob(token.split(".")[1]));
     const role = payload.role;
+    localStorage.setItem("user", JSON.stringify(payload));
 
     if (role === "customer") {
       navigate("/user-dashboard");
 
     } else if (role === "provider") {
 
-  if (payload.is_approved) {
-    navigate("/vendor-dashboard");
+  if (payload.approval_status === "approved") {
+
+    navigate("/vendor");
 
   } else {
+
     navigate("/vendor-verification");
+
   }
+
 
 
     } else if (role === "admin") {

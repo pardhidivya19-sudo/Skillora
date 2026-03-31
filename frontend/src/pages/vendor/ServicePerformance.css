@@ -1,0 +1,108 @@
+.sp-container {
+  padding: 30px;
+}
+
+/* TITLE */
+.sp-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+/* MAIN TITLE */
+.sp-main-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 5px;
+}
+
+/* SUBTITLE */
+.sp-subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 25px;
+}
+
+/* GRID */
+.sp-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+/* CARD */
+.sp-card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: 0.2s;
+}
+
+.sp-card:hover {
+  transform: translateY(-4px);
+}
+
+/* TITLE */
+.sp-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* ROW */
+.sp-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+/* LABEL */
+.label {
+  font-size: 14px;
+  color: #374151;   /* 🔥 darker */
+  font-weight: 500;
+}
+
+/* VALUE */
+.sp-card h4 {
+  font-size: 22px;      /* 🔥 bigger */
+  font-weight: 700;     /* 🔥 bold */
+  color: #111827;       /* 🔥 dark */
+}
+
+/* RATING */
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 18px;     /* 🔥 bigger */
+  font-weight: 700;
+  color: #111827;
+}
+
+.star-icon {
+  color: #f59e0b;   /* 🔥 perfect golden */
+  fill: #f59e0b;    /* 🔥 important (icon fill) */
+}
+
+/* PROGRESS BAR */
+.progress-bar {
+  margin-top: 15px;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background: #6366f1;
+  border-radius: 10px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .sp-grid {
+    grid-template-columns: 1fr;
+  }
+}
