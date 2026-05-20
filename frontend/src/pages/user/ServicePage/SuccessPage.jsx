@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./SuccessPage.css";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { FaCheckCircle } from "react-icons/fa";
 import API from "../../../services/api";
 

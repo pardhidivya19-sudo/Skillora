@@ -242,6 +242,7 @@ function VendorServices() {
                   objectFit: "cover",
                   borderRadius: "8px"
                 }}
+                alt="service thumbnail"
               />
             )}
 
