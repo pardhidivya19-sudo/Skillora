@@ -29,7 +29,7 @@ const [address, setAddress] = useState({
       API.get("/provider/all-services")
         .then(res => {
           const found = res.data.find(
-            (s) => s.provider_skill_id == slug
+            (s) => s.provider_skill_id === slug
           );
           setService(found);
         })
