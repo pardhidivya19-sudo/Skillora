@@ -9,6 +9,7 @@ import AdminRoute from "./routes/AdminRoutes";
 import AdminLayout from "./layout/AdminLayout";
 import Payments from "./pages/Payments";
 import Withdrawals from "./pages/Withdrawals";
+import AdminEnquiries from "./pages/AdminEnquiries";
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           <Route path="bookings" element={<Bookings />} />
           <Route path="payments" element={<Payments />} />
           <Route path="/withdrawals" element={<Withdrawals />} />
+          <Route path="/enquiries" element={<AdminEnquiries />} />
         </Route>
 
       </Routes>

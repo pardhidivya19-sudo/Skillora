@@ -125,3 +125,40 @@
   display:flex;
   gap:28px;
 }
+
+.footer-col ul li:hover{
+  color:white;
+  transform:translateX(3px);
+  transition:0.2s;
+}
+@media (max-width: 992px){
+  .footer-container{
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+  }
+}
+@media (max-width: 600px){
+
+  .footer{
+    padding:30px 20px;
+  }
+
+  .footer-container{
+    grid-template-columns:1fr;
+    gap:30px;
+  }
+
+  .footer-bottom{
+    flex-direction:column;
+    gap:10px;
+    text-align:center;
+  }
+
+  .footer-links{
+    justify-content:center;
+  }
+
+  .footer-desc{
+    max-width:100%;
+  }
+}

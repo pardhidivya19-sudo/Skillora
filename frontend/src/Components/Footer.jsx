@@ -9,8 +9,25 @@ import {
   FiPhone,
   FiMail
 } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Footer = () => {
+  const [services, setServices] = useState([]);
+  const navigate = useNavigate();
+  useEffect(() => {
+  fetchServices();
+}, []);
+
+const fetchServices = async () => {
+  try {
+    const res = await axios.get("http://localhost:5000/api/provider/categories");
+    setServices(res.data); // already top 5 aa rahe hai backend se
+  } catch (err) {
+    console.log("Error fetching footer services:", err);
+  }
+};
   return (
     <footer className="footer">
 <svg width="0" height="0">
@@ -36,11 +53,44 @@ const Footer = () => {
           </p>
 
           <div className="social-icons">
-            <div className="social"><FiFacebook /></div>
-            <div className="social"><FiTwitter /></div>
-            <div className="social"><FiInstagram /></div>
-            <div className="social"><FiYoutube /></div>
-          </div>
+
+  <a
+    href="https://www.facebook.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="social"
+  >
+    <FiFacebook />
+  </a>
+
+  <a
+    href="https://twitter.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="social"
+  >
+    <FiTwitter />
+  </a>
+
+  <a
+    href="https://www.instagram.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="social"
+  >
+    <FiInstagram />
+  </a>
+
+  <a
+    href="https://www.youtube.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="social"
+  >
+    <FiYoutube />
+  </a>
+
+</div>
 
         </div>
 
@@ -49,15 +99,15 @@ const Footer = () => {
 
           <h3>Quick Links</h3>
 
-          <ul>
-            <li>Services</li>
-            <li>Professionals</li>
-            <li>About</li>
-            <li>Contact</li>
-            <li>Reviews</li>
-          </ul>
+         <ul>
+  <li onClick={() => navigate("/services")}>Services</li>
+  <li onClick={() => navigate("/professionals")}>Professionals</li>
+  <li onClick={() => navigate("/about")}>About</li>
+  <li onClick={() => navigate("/contact")}>Contact</li>
+</ul>
 
         </div>
+
 
         {/* Column 3 */}
         <div className="footer-col">
@@ -65,13 +115,18 @@ const Footer = () => {
           <h3>Services</h3>
 
           <ul>
-            <li>Home Cleaning</li>
-            <li>Plumbing</li>
-            <li>Electrical</li>
-            <li>Beauty & Spa</li>
-            <li>Appliance Repair</li>
-            <li>Painting</li>
-          </ul>
+  {services.map((item, index) => (
+    <li
+      key={index}
+      onClick={() =>
+navigate(
+  `/services?category=${encodeURIComponent(item.category.toLowerCase())}`
+)      }
+    >
+      {item.category}
+    </li>
+  ))}
+</ul>
 
         </div>
 

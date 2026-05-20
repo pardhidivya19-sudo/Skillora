@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import API from "../services/api";
 import "./Login.css";
 
-
 function Login() {
   const navigate = useNavigate();
 
@@ -17,52 +16,50 @@ function Login() {
   };
 
   const handleLogin = async () => {
-  try {
-    const res = await API.post("/auth/login", form);
+    try {
+      const res = await API.post("/auth/login", form);
 
-    const token = res.data.token;
+      const token = res.data.token;
 
-    localStorage.setItem("token", token);
+      // ✅ store token
+      localStorage.setItem("token", token);
 
-    // Decode JWT to get role
-    const payload = JSON.parse(atob(token.split(".")[1]));
-    const role = payload.role;
-    localStorage.setItem("user", JSON.stringify(payload));
+      // ✅ decode JWT
+      const payload = JSON.parse(atob(token.split(".")[1]));
+      const role = payload.role;
 
-    if (role === "customer") {
-      navigate("/user-dashboard");
+      // ✅ store user
+      localStorage.setItem("user", JSON.stringify(payload));
 
-    } else if (role === "provider") {
+      // ✅ NAVIGATION (same as before)
+      if (role === "customer") {
+        navigate("/user/home");
+        window.location.reload(); // 🔥 IMPORTANT (Navbar update)
 
-  if (payload.approval_status === "approved") {
+      } else if (role === "provider") {
 
-    navigate("/vendor");
+        if (payload.approval_status === "approved") {
+          navigate("/vendor");
+          window.location.reload(); // 🔥
 
-  } else {
+        } else {
+          navigate("/vendor-verification");
+        }
 
-    navigate("/vendor-verification");
+      } else if (role === "admin") {
 
-  }
+        window.location.href = "http://localhost:3001";
 
+      }
 
-
-    } else if (role === "admin") {
-
-      // 🔥 OPTION 1 (If admin panel separate React app)
-      window.location.href = "http://localhost:3001";
-
-      // 🔥 OPTION 2 (If admin inside same frontend)
-      // navigate("/admin-dashboard");
+    } catch (err) {
+      alert("Invalid credentials");
     }
-
-  } catch (err) {
-    alert("Invalid credentials");
-  }
-};
+  };
 
   return (
     <div className="login-container">
-  <div className="login-box">
+      <div className="login-box">
 
         <h2>Skillora Login</h2>
 
@@ -82,11 +79,11 @@ function Login() {
         <button onClick={handleLogin}>Login</button>
 
         <div className="login-link">
-  Don't have an account?{" "}
-  <span onClick={() => navigate("/signup")}>
-    Signup
-  </span>
-</div>
+          Don't have an account?{" "}
+          <span onClick={() => navigate("/signup")}>
+            Signup
+          </span>
+        </div>
 
       </div>
     </div>

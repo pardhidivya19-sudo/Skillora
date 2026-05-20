@@ -26,7 +26,7 @@
 .service-card {
   background: #fff;
   border-radius: 16px;
-  overflow: hidden;
+  overflow: visible;
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   transition: all 0.3s ease;
   position: relative;
@@ -73,13 +73,20 @@
 
 /* IMAGE */
 .image-box {
-  position: relative;
+  width: 100%;
+  max-height: 250px;   /* flexible height */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f9fafb;
 }
 
 .image-box img {
   width: 100%;
-  height: 180px;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
+  display: block;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
 }
@@ -97,7 +104,8 @@
 /* CONTENT */
 .service-info {
   padding: 16px;
-  text-align: left;   /* 🔥 IMPORTANT FIX */
+  text-align: left;
+  flex-grow: 1;   /* 🔥 IMPORTANT FIX */
 }
 
 /* TITLE */
@@ -120,6 +128,8 @@
   color: #374151;
   margin-top: 8px;
   line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* TIMING */

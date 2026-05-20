@@ -1,0 +1,208 @@
+/* ========================= */
+/* SECTION */
+/* ========================= */
+
+.test-section{
+  padding:20px 0 80px 0;
+  background:#f5f6fb;
+}
+
+.test-container{
+  max-width:1300px;
+  margin:auto;
+  padding:0 20px;
+}
+
+/* ========================= */
+/* TITLE */
+/* ========================= */
+
+.test-title{
+  font-family:'Playfair Display', serif;
+  font-size:48px;
+  font-weight:700;
+  text-align:center;
+  color:#1d1d1f;
+  margin-bottom:10px;
+}
+
+.test-subtitle{
+  text-align:center;
+  font-size:18px;
+  color:#6b7280;
+  margin-top:0;
+  margin-bottom:40px;
+}
+
+/* ========================= */
+/* GRID */
+/* ========================= */
+
+.test-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr); /* DESKTOP SAME */
+  gap:20px;
+}
+
+/* ========================= */
+/* CARD */
+/* ========================= */
+
+.test-card{
+  background:white;
+  padding:14px 16px;
+  border-radius:18px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.05);
+  transition:0.3s;
+
+  width:260px;     /* DESKTOP SAME */
+  height:220px;    /* DESKTOP SAME */
+}
+
+.test-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 14px 35px rgba(0,0,0,0.1);
+}
+
+/* ========================= */
+/* TOP */
+/* ========================= */
+
+.test-top{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin-bottom:5px;
+}
+
+/* IMAGE */
+.test-top img{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-top:5px;
+}
+
+/* USER */
+.test-user{
+  flex:1;
+}
+
+.test-user h4{
+  font-family:'Playfair Display', serif;
+  font-size:18px;
+  margin:0;
+}
+
+.test-user p{
+  font-size:14px;
+  color:#6b7280;
+  margin:0;
+}
+
+/* ========================= */
+/* STARS */
+/* ========================= */
+
+.test-stars{
+  display:flex;
+  gap:2px;
+  margin-top:5px;
+}
+
+.star{
+  color:#d1d5db;
+  font-size:16px;
+}
+
+.star.active{
+  color:#f59e0b;
+}
+
+/* ========================= */
+/* REVIEW */
+/* ========================= */
+
+.test-review{
+  font-size:15px;
+  color:#4b5563;
+  line-height:1.6;
+}
+
+/* ========================= */
+/* 📱 TABLET */
+/* ========================= */
+
+@media (max-width:1024px){
+
+  .test-grid{
+    grid-template-columns:repeat(2,1fr);
+    justify-items:center; /* center cards */
+  }
+
+}
+
+/* ========================= */
+/* 📱 MOBILE */
+/* ========================= */
+
+@media (max-width:768px){
+
+  .test-title{
+    font-size:32px;
+  }
+
+  .test-subtitle{
+    font-size:15px;
+  }
+
+  .test-grid{
+    grid-template-columns:1fr;
+    justify-items:center;
+  }
+
+  .test-card{
+    width:100%;        /* FIX overflow */
+    max-width:320px;   /* nice width */
+    height:auto;       /* FIX text cut */
+  }
+
+  .test-top{
+    gap:10px;
+  }
+
+  .test-top img{
+    width:40px;
+    height:40px;
+  }
+
+  .test-user h4{
+    font-size:16px;
+  }
+
+  .test-user p{
+    font-size:13px;
+  }
+
+  .test-review{
+    font-size:14px;
+  }
+
+}
+
+/* ========================= */
+/* 📱 SMALL MOBILE */
+/* ========================= */
+
+@media (max-width:400px){
+
+  .test-container{
+    padding:0 12px;
+  }
+
+  .test-card{
+    max-width:100%;
+  }
+
+}

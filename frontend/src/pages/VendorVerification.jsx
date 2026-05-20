@@ -1,259 +1,319 @@
 import { useState, useEffect } from "react";
 import API from "../services/api";
 import "./VendorVerification.css";
-
+import LocationPicker from "../Components/LocationPicker";
 function VendorVerification() {
 
-  
   const [form, setForm] = useState({
-  experience: "",
-  location: "",
-  availability_status: true,
-  description: "",
-  skill_id: "",
-  price: "",
-  duration: "",
-  document:null
-});
-const [skills, setSkills] = useState([]);
-const [submitted, setSubmitted] = useState(false);
-const [status, setStatus] = useState(null);
-const [reason, setReason] = useState("");
-const [profileExists, setProfileExists] = useState(false);
+    experience: "",
+    location: "",
+    latitude: "",
+    longitude: "",
+    availability_status: true,
+    description: "",
+    skill_id: "",
+    price: "",
+    duration: "",
+    document: null
+  });
 
-useEffect(() => {
-  fetchSkills();
-}, []);
+  const [skills, setSkills] = useState([]);
+  const [showNewSkill, setShowNewSkill] = useState(false);
 
-useEffect(() => {
+  const [newSkill, setNewSkill] = useState({
+    skill_name: "",
+    category: "",
+    description: ""
+  });
 
-const token = localStorage.getItem("token");
+  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState(null);
+  const [reason, setReason] = useState("");
+  const [profileExists, setProfileExists] = useState(false);
 
-if (token) {
+  useEffect(() => {
+    fetchSkills();
+  }, []);
 
-const payload = JSON.parse(atob(token.split(".")[1]));
-
-setStatus(payload.approval_status);
-setReason(payload.rejection_reason);
-// 👇 check if vendor profile exists
-API.get("/provider/my-profile").then(res => {
-
-if (res.data) {
-setProfileExists(true);
-}
-
-}).catch(()=>{});
-
-}
-
-}, []);
-
-const fetchSkills = async () => {
-
-  try {
-
-    const res = await API.get("/provider/skills");
-
-    setSkills(res.data);
-
-  } catch (err) {
-
-    console.log("Error fetching skills");
-
-  }
-
-};
-  const handleChange = (e) => {
-
-const { name, value, files } = e.target;
-
-if (name === "document") {
-  setForm({ ...form, document: files[0] });
-  return;
-}
-
-setForm({
-...form,
-[name]: name==="availability_status" ? value==="true" : value
-})
-
-}
-
- const handleSubmit = async () => {
-  try {
+  useEffect(() => {
     const token = localStorage.getItem("token");
 
-    const formData = new FormData();
+    if (token) {
+      const payload = JSON.parse(atob(token.split(".")[1]));
 
-    formData.append("experience", form.experience);
-    formData.append("location", form.location);
-    formData.append("availability_status", form.availability_status);
-    formData.append("description", form.description);
-    formData.append("skill_id", form.skill_id);
-    formData.append("price", form.price);
-    formData.append("duration", form.duration);
-    formData.append("document", form.document);
+      setStatus(payload.approval_status);
+      setReason(payload.rejection_reason);
 
-    await API.post(
-      "/provider/create-profile",
-      formData,
-      {
+      API.get("/provider/my-profile")
+        .then(res => {
+          if (res.data) setProfileExists(true);
+        })
+        .catch(() => {});
+    }
+  }, []);
+
+  const fetchSkills = async () => {
+    try {
+      const res = await API.get("/provider/skills");
+      setSkills(res.data);
+    } catch (err) {
+      console.log("Error fetching skills");
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+
+    if (name === "document") {
+      setForm({ ...form, document: files[0] });
+      return;
+    }
+
+    setForm({
+      ...form,
+      [name]: name === "availability_status" ? value === "true" : value
+    });
+  };
+
+  const handleAddSkill = async () => {
+    try {
+      const res = await API.post("/provider/add-skill", newSkill);
+
+      setSkills(prev => [...prev, res.data]);
+      setForm({ ...form, skill_id: res.data.skill_id });
+      setShowNewSkill(false);
+
+    } catch (err) {
+      console.log(err);
+      alert("Error adding skill");
+    }
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const formData = new FormData();
+
+      formData.append("experience", form.experience);
+      formData.append("location", form.location);
+      formData.append("latitude", form.latitude);
+      formData.append("longitude", form.longitude);
+      formData.append("availability_status", form.availability_status);
+      formData.append("description", form.description);
+      formData.append("skill_id", form.skill_id);
+      formData.append("price", form.price);
+      formData.append("duration", form.duration);
+      formData.append("document", form.document);
+
+      await API.post("/provider/create-profile", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data"
         }
-      }
-    );
+      });
 
-setSubmitted(true);
-  } catch (err) {
-    alert("Error submitting profile");
-  }
-};
+      setSubmitted(true);
+
+    } catch (err) {
+      alert("Error submitting profile");
+    }
+  };
 
   return (
-<div className="vendor-container">
+    <div className="vendor-container">
 
-{status === "rejected" ? (
+      {status === "rejected" ? (
 
-<div className="status-box">
+        <div className="status-box">
+          <h2>Verification Rejected ❌</h2>
+          <p>Your request was rejected by admin.</p>
+          <p><b>Reason:</b> {reason}</p>
 
-<h2>Verification Rejected ❌</h2>
+          <br />
 
-<p>Your request was rejected by admin.</p>
+          <button onClick={() => {
+            setStatus(null);
+            setSubmitted(false);
+          }}>
+            Fill Form Again
+          </button>
 
-<p><b>Reason:</b> {reason}</p>
+          <br /><br />
 
-<br/>
+          <button onClick={() => {
+            window.location.href = "/";
+          }}>
+            Cancel
+          </button>
+        </div>
 
-<button onClick={()=>{
-setStatus(null);
-setSubmitted(false);
-}}>
-Fill Form Again
-</button>
+      ) : (submitted || profileExists) ? (
 
-<br/><br/>
+        <div style={{ textAlign: "center", marginTop: "80px" }}>
+          <h2>Request Submitted ✅</h2>
+          <p>Your verification request has been submitted.</p>
+          <p>Please wait for admin approval.</p>
+        </div>
 
-<button onClick={()=>{
-window.location.href="/";
-}}>
-Cancel
-</button>
+      ) : (
 
-</div>
+        <>
+          <h2>Complete Your Provider Profile</h2>
 
-) : (submitted || profileExists) ? (
+          <input
+            className="form-input"
+            name="experience"
+            value={form.experience}
+            placeholder="Experience (years)"
+            onChange={handleChange}
+          />
 
-<div style={{textAlign:"center", marginTop:"80px"}}>
+          <br /><br />
 
-<h2>Request Submitted ✅</h2>
+          {/* ✅ LOCATION INPUT */}
+          <input
+            className="form-input"
+            name="location"
+            value={form.location}
+            placeholder="Select location from map"
+            readOnly
+          />
 
-<p>Your verification request has been submitted.</p>
+          {/* ✅ MAP PICKER */}
+          <LocationPicker
+            setLocationData={(data) =>
+              setForm(prev => ({
+                ...prev,
+                location: data.location,
+      latitude: data.latitude,
+      longitude: data.longitude
+              }))
+            }
+          />
 
-<p>Please wait for admin approval.</p>
+          <br /><br />
 
-</div>
+          <select name="availability_status" onChange={handleChange}>
+            <option value="true">Available</option>
+            <option value="false">Busy</option>
+          </select>
 
-) : (
+          <br /><br />
 
-<>
+          <textarea
+            name="description"
+            value={form.description}
+            placeholder="Describe your services"
+            onChange={handleChange}
+          />
 
-<h2>Complete Your Provider Profile</h2>
+          <br /><br />
 
-<input
-className="form-input"
-name="experience"
-value={form.experience}
-placeholder="Experience (years)"
-onChange={handleChange}
-/>
+          <select
+            name="skill_id"
+            value={form.skill_id}
+            onChange={(e) => {
+              if (e.target.value === "new") {
+                setShowNewSkill(true);
+              } else {
+                setShowNewSkill(false);
+                setForm({ ...form, skill_id: e.target.value });
+              }
+            }}
+          >
+            <option value="">Select Skill</option>
 
-<br/><br/>
+            {skills.map(skill => (
+              <option key={skill.skill_id} value={skill.skill_id}>
+                {skill.skill_name}
+              </option>
+            ))}
 
-<input
-className="form-input"
-name="location"
-value={form.location}
-placeholder="Service Location"
-onChange={handleChange}
-/>
+            <option value="new">+ Add New Skill</option>
+          </select>
 
-<br/><br/>
+          {showNewSkill && (
+            <div className="new-skill-box">
+              <h4>Add New Skill</h4>
 
-<select name="availability_status" onChange={handleChange}>
-<option value="true">Available</option>
-<option value="false">Busy</option>
-</select>
+              <input
+                className="form-input"
+                placeholder="Skill Name"
+                onChange={(e) =>
+                  setNewSkill({ ...newSkill, skill_name: e.target.value })
+                }
+              />
 
-<br/><br/>
+              <input
+                className="form-input"
+                placeholder="Category"
+                onChange={(e) =>
+                  setNewSkill({ ...newSkill, category: e.target.value })
+                }
+              />
 
-<textarea
-name="description"
-value={form.description}
-placeholder="Describe your services"
-onChange={handleChange}
-/>
+              <textarea
+                className="form-input"
+                placeholder="Description"
+                onChange={(e) =>
+                  setNewSkill({ ...newSkill, description: e.target.value })
+                }
+              />
 
-<br/><br/>
+              <button
+                type="button"
+                className="submit-btn"
+                onClick={handleAddSkill}
+              >
+                + Add Skill
+              </button>
+            </div>
+          )}
 
-<select
-name="skill_id"
-value={form.skill_id}
-onChange={handleChange}
->
-<option value="">Select Skill</option>
-{skills.map(skill => (
-<option key={skill.skill_id} value={skill.skill_id}>
-{skill.skill_name}
-</option>
-))}
-</select>
+          <br /><br />
 
-<br/><br/>
+          <input
+            className="form-input"
+            type="number"
+            name="price"
+            value={form.price}
+            placeholder="Service Price"
+            onChange={handleChange}
+          />
 
-<input
-className="form-input"
-type="number"
-name="price"
-value={form.price}
-placeholder="Service Price"
-onChange={handleChange}
-/>
+          <br /><br />
 
-<br/><br/>
+          <input
+            className="form-input"
+            type="number"
+            name="duration"
+            value={form.duration}
+            placeholder="Service Duration"
+            onChange={handleChange}
+          />
 
-<input
-className="form-input"
-type="number"
-name="duration"
-value={form.duration}
-placeholder="Service Duration"
-onChange={handleChange}
-/>
+          <br /><br />
 
-<br/><br/>
+          <input
+            className="form-input"
+            type="file"
+            name="document"
+            accept=".pdf,.doc,.docx"
+            onChange={handleChange}
+          />
 
-<input
-className="form-input"
-type="file"
-name="document"
-accept=".pdf,.doc,.docx"
-onChange={handleChange}
-/>
+          <br /><br />
 
-<br/><br/>
+          <button className="submit-btn" onClick={handleSubmit}>
+            Submit Profile
+          </button>
+        </>
 
-<button className="submit-btn" onClick={handleSubmit}>
-Submit Profile
-</button>
+      )}
 
-</>
-
-)}
-
-</div>
-);
+    </div>
+  );
 }
 
 export default VendorVerification;

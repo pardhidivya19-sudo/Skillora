@@ -1,125 +1,166 @@
-.navbar {
-  height: 70px;
-  background: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 40px;
-  font-family: 'Poppins', sans-serif;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-   position: sticky;
+.navbar{
+  position: sticky;
   top: 0;
-  z-index: 1000; /* highest */
-}
-
-/* Left */
-.nav-left {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-
-.logo {
-  font-size: 22px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.nav-links span {
-  margin-right: 20px;
-  cursor: pointer;
-  font-size: 15px;
-}
-
-.nav-links span:hover {
-  color: #6c5ce7;
-}
-
-/* Center */
-.nav-center {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-}
-
-.location-tab {
-  padding: 6px 12px;
-  border-radius: 20px;
-  background: #f1f2f6;
-  cursor: pointer;
-}
-
-.my-bookings {
-  cursor: pointer;
-}
-
-/* Right */
-.login-btn {
-  padding: 8px 18px;
-  border-radius: 20px;
-  border: none;
-  background: #6c5ce7;
-  color: white;
-  cursor: pointer;
-}
-
-.profile-dropdown {
-  position: relative;
-  cursor: pointer;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 35px;
-  right: 0;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  padding: 10px;
-  width: 150px;
-}
-
-.dropdown-menu div {
-  padding: 8px;
-  cursor: pointer;
-}
-
-.dropdown-menu div:hover {
-  background: #f1f2f6;
-}
-
-/* Modal */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
+  z-index: 1000;
   width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
+  background: #E8E2E3;
   display: flex;
   justify-content: center;
-  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-.location-modal {
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  width: 350px;
-}
-
-.modal-header {
+.nav-container{
+  width: 95%;
+  max-width: 1400px;
+  height: 80px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  margin-bottom: 15px;
+  gap:10px;
 }
 
-.detect-btn {
-  padding: 10px;
-  width: 100%;
-  border: none;
-  border-radius: 6px;
-  background: #6c5ce7;
-  color: white;
-  cursor: pointer;
+/* LOGO */
+.nav-logo{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 34px;
+  font-weight: 700;
+  background: linear-gradient(90deg,#7C6BFF,#FF6A6A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* NAV LINKS */
+.nav-links{
+  list-style: none;
+  display: flex;
+  gap: 42px;
+  transition: all 0.3s ease;
+}
+
+.nav-links a{
+  text-decoration: none;
+  font-size: 18px;
+  color: #6b6b6b;
+  font-weight: 500;
+}
+
+.nav-links a:hover{
+  color:#6C63FF;
+}
+
+/* RIGHT SIDE */
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
+
+.nav-icon{
+  font-size:22px;
+  color:#555;
+  cursor:pointer;
+}
+
+/* BUTTON */
+.nav-signin-btn{
+  padding:12px 26px;
+  border:none;
+  border-radius:16px;
+  background: linear-gradient(90deg, #7C6BFF, #FF6A6A);
+  color:white;
+  font-size:16px;
+  font-weight:500;
+  cursor:pointer;
+}
+
+/* MENU ICON */
+.menu-toggle{
+  display:none;
+  font-size:28px;
+  cursor:pointer;
+}
+
+/* ========================= */
+/* 📱 MOBILE (<=768px) */
+/* ========================= */
+
+@media (max-width: 768px){
+
+  .menu-toggle{
+    display:block;
+  }
+
+  .nav-logo{
+    font-size:24px;
+  }
+
+  .nav-right{
+    gap:8px;
+  }
+
+  .nav-icon{
+    font-size:18px;
+  }
+
+  .nav-signin-btn{
+    padding:6px 12px;
+    font-size:12px;
+    border-radius:10px;
+  }
+
+  .nav-links{
+    position:absolute;
+    top:80px;
+    left:0;
+    width:100%;
+    background:#E8E2E3;
+
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+
+    padding:20px 0;
+    display:none;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+  }
+
+  .nav-links.active{
+    display:flex;
+  }
+
+  .nav-links li{
+    width:100%;
+    text-align:center;
+  }
+
+}
+
+/* ========================= */
+/* 📱 SMALL MOBILE (<=400px) */
+/* ========================= */
+
+@media (max-width: 400px){
+
+  .nav-container{
+    height:70px;
+  }
+
+  .nav-logo{
+    font-size:20px;
+  }
+
+  .nav-signin-btn{
+    padding:5px 10px;
+    font-size:11px;
+  }
+
+  .nav-icon{
+    font-size:16px;
+  }
+
+  .menu-toggle{
+    font-size:24px;
+  }
+
 }

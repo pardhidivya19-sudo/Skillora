@@ -1,0 +1,151 @@
+.hw-section{
+  padding:40px 0 60px 0;
+  background:#f5f6fb;
+  text-align:center;
+}
+
+.hw-container{
+  max-width:1200px;
+  margin:auto;
+  padding:0 20px;
+}
+
+/* TITLE */
+.hw-title{
+  font-family:'Playfair Display', serif;
+  font-size:48px;
+  font-weight:700;
+  color:#1e1e2f;
+  margin-bottom:10px;
+}
+
+.hw-subtitle{
+  font-size:18px;
+  color:#6b7280;
+  margin-bottom:50px;
+  margin-top:0;
+}
+
+/* GRID */
+.hw-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:40px;                 /* 🔥 reduce from 60 → clean spacing */
+  align-items:flex-start;
+  justify-items:center;     /* 🔥 center cards */
+}
+
+/* CARD */
+.hw-card{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  max-width:300px;
+}
+
+/* NUMBER BOX */
+.hw-number{
+  width:90px;
+  height:90px;
+  background:#dad9f8;
+  border-radius:22px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:10px;
+}
+
+/* NUMBER TEXT */
+.hw-number span{
+  font-size:32px;
+  font-weight:700;
+  background:linear-gradient(90deg,#7C6BFF,#FF6A6A);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* STEP TITLE */
+.hw-card h3{
+  font-family:'Playfair Display', serif;
+  font-size:24px;
+  margin-bottom:8px;
+  color:#1e1e2f;
+}
+
+/* DESCRIPTION */
+.hw-card p{
+  max-width:260px;
+  font-size:16px;
+  color:#6b7280;
+  line-height:1.6;
+  margin-top:0;
+  margin-bottom:0;
+}
+
+/* ========================= */
+/* 📱 TABLET */
+/* ========================= */
+
+@media (max-width:1024px){
+
+  .hw-grid{
+    grid-template-columns:repeat(2,1fr); /* 🔥 2 columns */
+    gap:30px;
+  }
+
+  .hw-title{
+    font-size:40px;
+  }
+
+}
+
+/* ========================= */
+/* 📱 MOBILE */
+/* ========================= */
+
+@media (max-width:768px){
+
+  .hw-grid{
+    grid-template-columns:1fr;  /* 🔥 1 column */
+    gap:25px;
+  }
+
+  .hw-title{
+    font-size:30px;
+  }
+
+  .hw-subtitle{
+    font-size:15px;
+    margin-bottom:30px;
+  }
+
+  .hw-number{
+    width:70px;
+    height:70px;
+  }
+
+  .hw-number span{
+    font-size:24px;
+  }
+
+  .hw-card h3{
+    font-size:20px;
+  }
+
+  .hw-card p{
+    font-size:14px;
+  }
+
+}
+
+/* ========================= */
+/* 📱 SMALL MOBILE */
+/* ========================= */
+
+@media (max-width:400px){
+
+  .hw-container{
+    padding:0 12px;
+  }
+
+}

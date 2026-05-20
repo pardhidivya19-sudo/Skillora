@@ -1,127 +1,90 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import { FiHeart, FiUser } from "react-icons/fi";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { FiMenu, FiX } from "react-icons/fi";
+
 
 function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // ✅ STEP 1: state + navigate (INSIDE component)
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
-  const [showLocationModal, setShowLocationModal] = useState(false);
-  const [location, setLocation] = useState("Select Location");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false);
-
+  // ✅ STEP 2: check login
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    setIsLoggedIn(!!token);
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
   }, []);
 
-  const detectLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        const lat = position.coords.latitude;
-        const lng = position.coords.longitude;
-        setLocation(`Lat: ${lat.toFixed(2)}, Lng: ${lng.toFixed(2)}`);
-        setShowLocationModal(false);
-      });
-    } else {
-      alert("Geolocation not supported");
-    }
-  };
-
+  // ✅ STEP 3: LOGOUT FUNCTION (YEHI TU PUCH RAHI THI)
   const handleLogout = () => {
     localStorage.removeItem("token");
-    setIsLoggedIn(false);
-    navigate("/");
+    localStorage.removeItem("user");
+
+    setUser(null);
+
+    navigate("/"); // landing page
   };
 
   return (
-    <>
-      <nav className="navbar">
+    <header className="navbar">
 
-        {/* Left */}
-        <div className="nav-left">
-          <div className="logo" onClick={() => navigate("/")}>
-            Skillora
-          </div>
+      <div className="nav-container">
 
-          <div className="nav-links">
-            <span onClick={() => navigate("/")}>Home</span>
-            <span onClick={() => navigate("/services")}>Our Services</span>
-            <span>About Us</span>
-          </div>
+        <div className="nav-logo">
+          Skill<span>ora</span>
         </div>
 
-        {/* Center */}
-        <div className="nav-center">
-          <div
-            className="location-tab"
-            onClick={() => setShowLocationModal(true)}
-          >
-            📍 {location}
-          </div>
+        <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+  {menuOpen ? <FiX /> : <FiMenu />}
+</div>
 
-          <span className="my-bookings">
-            My Bookings
-          </span>
-        </div>
+<ul className={`nav-links ${menuOpen ? "active" : ""}`}>          <li><Link to="/user/home">Home</Link></li>
+          <li><Link to="/services" onClick={() => setMenuOpen(false)} >Services</Link></li>
+          <li><Link to="/professionals" onClick={() => setMenuOpen(false)}>Professionals</Link></li>
+          <li><Link to="/about" onClick={() => setMenuOpen(false)}>About</Link></li>
+          <li><Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link></li>
+        </ul>
 
-        {/* Right */}
         <div className="nav-right">
-          {!isLoggedIn ? (
-            <button
-              className="login-btn"
-              onClick={() => navigate("/login")}
-            >
-              Login
-            </button>
-          ) : (
-            <div
-              className="profile-dropdown"
-              onClick={() => setShowDropdown(!showDropdown)}
-            >
-              👤 My Profile
-              
-              {showDropdown && (
-                <div className="dropdown-menu">
-                  <div onClick={() => navigate("/user-dashboard")}>
-                    Dashboard
-                  </div>
-                  <div onClick={handleLogout}>
-                    Logout
-                  </div>
-                </div>
-              )}
-            </div>
+
+          {/* ✅ Wishlist only if logged in */}
+          {user && (
+            <Link to="/wishlist">
+              <FiHeart className="nav-icon"/>
+            </Link>
           )}
-        </div>
 
-      </nav>
+          {/* ✅ Account only if logged in */}
+          {user && (
+            <Link to="/account">
+              <FiUser className="nav-icon"/>
+            </Link>
+          )}
 
-      {/* Location Modal */}
-      {showLocationModal && (
-        <div className="modal-overlay">
-          <div className="location-modal">
-            <div className="modal-header">
-              <h3>Select Location</h3>
-              <span
-                className="close-btn"
-                onClick={() => setShowLocationModal(false)}
-              >
-                ✖
-              </span>
-            </div>
-
-            <button
-              className="detect-btn"
-              onClick={detectLocation}
-            >
-              Use Current Location
+          {/* ✅ LOGIN / LOGOUT SWITCH */}
+          {!user ? (
+            <Link to="/login">
+              <button className="nav-signin-btn">
+                Login
+              </button>
+            </Link>
+          ) : (
+            <button className="nav-signin-btn" onClick={handleLogout}>
+              Logout
             </button>
-          </div>
+          )}
+
         </div>
-      )}
-    </>
+
+      </div>
+
+    </header>
   );
 }
 

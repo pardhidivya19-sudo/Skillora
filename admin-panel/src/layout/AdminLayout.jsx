@@ -114,6 +114,7 @@ useEffect(() => {
           <li onClick={() => navigate("/bookings")}>Bookings</li>
           <li onClick={() => navigate("/payments")}>Payments</li>
           <li onClick={() => navigate("/withdrawals")}>Withdrawals</li>
+          <li onClick={() => navigate("/enquiries")}>Enquiries</li>
         </ul>
       </div>
 
