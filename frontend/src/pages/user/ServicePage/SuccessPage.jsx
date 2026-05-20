@@ -17,7 +17,6 @@ const SuccessPage = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
-  const { slug } = useParams();
 
   const [paymentMode, setPaymentMode] = useState("");
   const [address, setAddress] = useState("");

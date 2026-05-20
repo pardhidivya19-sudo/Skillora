@@ -45,7 +45,7 @@ const [dates, setDates] = useState([]);
   API.get("/provider/all-services")
     .then(res => {
       const found = res.data.find(
-        (s) => s.provider_skill_id == slug
+        (s) => s.provider_skill_id === slug
       );
       setService(found);
     });
@@ -66,7 +66,7 @@ const [dates, setDates] = useState([]);
       ]);
     });
  setDates(generateDates());
-}, [slug]);
+}, [slug, navigate]);
 
 
 if (!service) {

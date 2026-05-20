@@ -22,7 +22,7 @@ const ServiceDetails = () => {
 
         // 🔥 current service
         const found = all.find(
-          (s) => s.provider_skill_id == slug
+          (s) => s.provider_skill_id === slug
         );
 
         setService(found);
@@ -32,7 +32,7 @@ const ServiceDetails = () => {
           const related = all.filter(
             (s) =>
               s.category === found.category &&
-              s.provider_skill_id != slug
+              s.provider_skill_id !== slug
           );
 
           setRelatedServices(related);
