@@ -24,7 +24,7 @@ return (
 
 <div className="wishlist-img">
 
-<img src={service.image}/>
+<img src={service.image} alt="Service" />
 
 <div
 className="wishlist-heart"

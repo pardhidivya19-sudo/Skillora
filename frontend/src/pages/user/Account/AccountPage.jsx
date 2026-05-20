@@ -106,7 +106,7 @@ const navigate = useNavigate();
 
               <div className="account-booking-card" key={b.booking_id}>
 
-                <img src={b.image_url || "/images/cleaning.jpg"} alt="" />
+                <img src={b.image_url || "/images/cleaning.jpg"} alt="service" />
 
                 <div>
                   <h3>{b.title}</h3>
@@ -137,7 +137,7 @@ const navigate = useNavigate();
 
               <div className="account-booking-card" key={b.booking_id}>
 
-                <img src={b.image_url || "/images/electrical.jpg"} alt="" />
+                <img src={b.image_url || "/images/electrical.jpg"} alt="service" />
 
                 <div>
                   <h3>{b.title}</h3>
@@ -164,7 +164,7 @@ const navigate = useNavigate();
 
       <div className="account-service-card" key={service.id}>
 
-        <img src={service.image} alt="" />
+        <img src={service.image} alt="Service" />
 
         <h3>{service.title}</h3>
 
