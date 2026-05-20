@@ -1,0 +1,268 @@
+/* ===== Container ===== */
+.details-container {
+  padding: 40px;
+  background: #f5f7fb;
+  min-height: 100vh;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+/* ===== HEADER LAYOUT ===== */
+/* ===== Header Layout ===== */
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+/* ===== Small Back Button ===== */
+.back-btn {
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  color: #374151;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.back-btn:hover {
+  background: #e5e7eb;
+}
+
+/* ===== Action Buttons ===== */
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* Accept */
+.approve-btn {
+  background: #16a34a;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  font-size: 13px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.approve-btn:hover {
+  background: #15803d;
+}
+
+/* Reject */
+.reject-btn {
+  background: white;
+  color: #dc2626;
+  border: 1px solid #dc2626;
+  padding: 6px 14px;
+  font-size: 13px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.reject-btn:hover {
+  background: #dc2626;
+  color: white;
+}
+
+/* Block */
+.block-btn {
+  background: #f59e0b;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  font-size: 13px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.block-btn:hover {
+  background: #d97706;
+}
+/* ===== Delete Button ===== */
+.delete-btn {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  font-size: 13px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.delete-btn:hover {
+  background: #b91c1c;
+}
+/* ===== Name & Location ===== */
+.details-container h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #1f2937;
+}
+
+.sub-text {
+  color: #6b7280;
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+
+/* ===== Grid Layout ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+/* ===== Cards ===== */
+.card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== Card Headings ===== */
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #111827;
+  border-bottom: 2px solid #f1f1f1;
+  padding-bottom: 8px;
+}
+
+/* ===== Text Styling ===== */
+.card p {
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: #374151;
+  line-height: 1.5;
+}
+
+/* ===== Skills ===== */
+.skill-item {
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.skill-item strong {
+  font-size: 15px;
+  color: #111827;
+}
+
+.skill-item p {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* ===== Review Item ===== */
+.review-item {
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.review-item p {
+  margin: 4px 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* ===== STATUS BADGE ===== */
+.status-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  margin-top: -10px;
+  letter-spacing: 0.3px;
+}
+
+/* Approved */
+.status-badge.approved {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+/* Rejected */
+.status-badge.rejected {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+/* Blocked */
+.status-badge.blocked {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+/* Pending */
+.status-badge.pending {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+.reject-modal-overlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.5);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+
+.reject-modal{
+  background:white;
+  padding:25px;
+  border-radius:8px;
+  width:400px;
+}
+
+.reject-modal textarea{
+  width:100%;
+  height:100px;
+  margin-top:10px;
+  padding:10px;
+  border:1px solid #ccc;
+  border-radius:5px;
+}
+
+.modal-actions{
+  margin-top:15px;
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+}
+
+.cancel-btn{
+  padding:8px 15px;
+  background:#ccc;
+  border:none;
+  cursor:pointer;
+}
+
+.confirm-reject-btn{
+  padding:8px 15px;
+  background:#e74c3c;
+  color:white;
+  border:none;
+  cursor:pointer;
+}

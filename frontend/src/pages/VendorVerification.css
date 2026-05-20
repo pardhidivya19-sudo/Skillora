@@ -1,0 +1,110 @@
+/* MAIN CONTAINER */
+.vendor-container {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* HEADING */
+.vendor-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+/* INPUTS */
+.form-input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.form-input:focus {
+  border-color: #6c63ff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(108,99,255,0.3);
+}
+
+/* TEXTAREA */
+textarea.form-input {
+  min-height: 80px;
+  resize: none;
+}
+
+/* SELECT */
+select.form-input {
+  cursor: pointer;
+}
+
+/* BUTTON */
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background: #6c63ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  background: #5548e0;
+}
+
+/* STATUS BOX (waiting / rejected) */
+.status-box {
+  text-align: center;
+  padding: 40px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.status-box h2 {
+  margin-bottom: 10px;
+}
+
+/* SUCCESS */
+.status-box h2:contains("Submitted") {
+  color: green;
+}
+
+/* REJECT */
+.status-box h2:contains("Rejected") {
+  color: red;
+}
+
+/* BUTTONS (REJECT PAGE) */
+.status-box button {
+  padding: 10px 18px;
+  margin: 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.status-box button:first-of-type {
+  background: #6c63ff;
+  color: white;
+}
+
+.status-box button:last-of-type {
+  background: #ddd;
+}
+
+/* FILE INPUT */
+input[type="file"] {
+  margin-top: 10px;
+}

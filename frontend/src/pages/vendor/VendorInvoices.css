@@ -1,0 +1,141 @@
+.invoice-container {
+  padding: 25px;
+}
+
+/* TITLE */
+.inv-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.inv-subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 25px;
+}
+
+/* GRID */
+.invoice-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+/* CARD */
+.invoice-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.invoice-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+}
+
+/* TOP */
+.inv-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inv-left {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.inv-icon {
+  width: 42px;
+  height: 42px;
+  background: #ede9fe;
+  color: #6366f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+/* ID */
+.inv-id {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* SERVICE NAME */
+.invoice-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* STATUS */
+.status {
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.paid {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+/* DETAILS */
+.inv-details {
+  margin-top: 15px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.row span:first-child {
+  color: #6b7280;
+}
+
+.row span:last-child {
+  font-weight: 500;
+  color: #111827;
+}
+
+/* BUTTON */
+.download-btn {
+  margin-top: 15px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  background: linear-gradient(to right, #6366f1, #4f46e5);
+  border: none;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+   display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.download-btn:hover {
+  background: linear-gradient(to right, #4f46e5, #4338ca);
+  transform: scale(1.02);
+}
+/* HIDDEN TEMPLATE (UNCHANGED) */
+.invoice-template {
+  position: absolute;
+  left: -9999px;
+  width: 500px;
+  padding: 20px;
+  background: white;
+  color: black;
+}

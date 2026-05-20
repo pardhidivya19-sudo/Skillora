@@ -1,0 +1,95 @@
+.vh-container {
+  padding: 15px 30px;
+  margin-top: 0;
+}
+
+/* TITLE */
+.vh-title {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+.vh-title {
+  margin-top: 0;   /* 🔥 extra gap remove */
+}
+
+.vh-subtitle {
+  color: #6b7280;
+  margin-bottom: 25px;
+}
+
+/* GRID */
+.vh-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 25px;
+}
+
+/* CARD */
+.vh-card {
+  background: white;
+  padding: 25px;        /* 🔥 bigger */
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+  transition: 0.2s;
+  min-height: 100px;    /* 🔥 height fix */
+  cursor: pointer;
+}
+
+.vh-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
+/* ICON */
+.vh-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* COLORS */
+.blue { background: #e0e7ff; color: #4f46e5; }
+.purple { background: #ede9fe; color: #7c3aed; }
+.green { background: #dcfce7; color: #16a34a; }
+.orange { background: #ffedd5; color: #ea580c; }
+.yellow { background: #fef9c3; color: #ca8a04; }
+
+/* CONTENT */
+.vh-content h3 {
+  font-size: 24px;   /* 🔥 bigger number */
+  font-weight: 600;
+}
+
+.vh-content p {
+  font-size: 14px;
+  color: #6b7280;
+}
+.vh-chart {
+  margin-top: 40px;
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+.vh-chart h3 {
+  margin-bottom: 15px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .vh-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .vh-grid {
+    grid-template-columns: 1fr;
+  }
+}

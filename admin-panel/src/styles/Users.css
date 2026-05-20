@@ -1,0 +1,125 @@
+.users-container {
+  padding: 30px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.users-container h2 {
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+thead {
+  background-color: #4e73df;
+  color: white;
+}
+
+thead th {
+  padding: 12px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+tbody tr {
+  border-bottom: 1px solid #eee;
+  transition: background 0.2s ease;
+}
+
+tbody tr:hover {
+  background-color: #f8f9fc;
+}
+
+tbody td {
+  padding: 12px;
+  font-size: 14px;
+  color: #555;
+}
+
+
+.status {
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status.active {
+  background-color: #d4edda;
+  color: #155724;
+}
+.status.inactive {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+
+
+.block-btn {
+  background-color: #e6edf7;
+  color: #2563eb;
+}
+
+.unblock-btn {
+  background-color: #e6f4ea;
+  color: #16a34a;
+}
+
+.search-input {
+  margin-bottom: 20px;
+  padding: 8px;
+  width: 250px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+/* Action column alignment */
+.action-cell {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Base button */
+.action-btn {
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: none;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* Block button (Soft Blue) */
+.block-btn {
+  background-color: #e6edf7;
+  color: #2563eb;
+}
+
+.block-btn:hover {
+  background-color: #dbe7fb;
+}
+.unblock-btn {
+  background-color: #e6f4ea;
+  color: #16a34a;
+}
+
+/* Delete button (Soft Red) */
+.delete-btn {
+  background-color: #f8e4e4;
+  color: #dc2626;
+}
+
+.delete-btn:hover {
+  background-color: #f3d2d2;
+}

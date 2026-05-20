@@ -1,0 +1,136 @@
+.layout {
+  display: flex;
+  height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background-color: #4e73df;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  margin-bottom: 30px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 10px 0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.sidebar li:hover {
+  padding-left: 5px;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  background: #f5f6fa;
+  overflow-y: auto;
+}
+/* NAVBAR */
+
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:white;
+  padding:18px 30px;
+  border-bottom:1px solid #eee;
+  width:100%;
+  box-sizing:border-box;
+}
+.navbar h3{
+  font-size:30px;
+  font-weight:700;
+  color:#333;
+}
+
+.nav-actions{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  flex-shrink:0;
+}
+
+.nav-icon{
+  font-size:20px;
+  cursor:pointer;
+}
+
+.csv-btn{
+  background:#4e73df;
+  color:white;
+  border:none;
+  padding:8px 16px;
+  border-radius:6px;
+  cursor:pointer;
+  white-space:nowrap;
+}
+
+.csv-btn:hover{
+  background:#2e59d9;
+}
+
+.date-filter{
+  padding:6px;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
+.notification-container{
+  position:relative;
+  display:flex;
+  align-items:center;
+}
+
+.notification-badge{
+  position:absolute;
+  top:-5px;
+  right:-8px;
+  background:red;
+  color:white;
+  font-size:11px;
+  padding:2px 6px;
+  border-radius:50%;
+}
+
+.notification-dropdown{
+  position:absolute;
+  right:0;
+  top:45px;
+  width:280px;
+  max-height:300px;
+  overflow-y:auto;
+  background:white;
+  border-radius:10px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+  padding:5px 0;
+  z-index:9999;
+}
+
+.notification-dropdown p{
+  padding:8px;
+  border-bottom:1px solid #eee;
+}
+.notification-item{
+  padding:10px 15px;
+  cursor:pointer;
+  border-bottom:1px solid #eee;
+  transition:0.2s;
+}
+
+.notification-item:hover{
+  background:#f1f4ff;
+}
+.page-content{
+  padding:30px;
+}

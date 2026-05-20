@@ -1,0 +1,244 @@
+.pop-section{
+  padding:0px 0px 80px 0px;
+  background:#e5e8f2;
+}
+
+.pop-container{
+  max-width:1300px;
+  margin:auto;
+  padding:0 20px;
+}
+
+/* HEADER */
+.pop-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+.pop-header h2{
+  font-size:48px;
+  font-weight:800;
+  color:#1d1d1f;
+  margin-bottom:2px;
+}
+
+.pop-header p{
+  margin-top:8px;
+  color:#6b7280;
+  font-size:18px;
+}
+
+.pop-view{
+  color:#6366f1;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* GRID */
+.pop-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:30px;
+  justify-items:center; /* 🔥 CENTER FIX */
+}
+
+/* CARD */
+.pop-card{
+  background:white;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 10px 25px rgba(0,0,0,0.06);
+  transition:0.3s;
+
+  width:100%;           /* 🔥 FIX */
+  max-width:280px;      /* 🔥 SAME DESIGN */
+  height:auto;
+
+  box-sizing:border-box;
+}
+
+.pop-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 15px 35px rgba(0,0,0,0.1);
+}
+
+/* IMAGE */
+.pop-img{
+  position:relative;
+}
+
+.pop-img img{
+  width:100%;
+  height:200px;   /* 🔥 FLEXIBLE */
+  object-fit:cover;
+}
+
+/* CATEGORY TAG */
+.pop-tag{
+  position:absolute;
+  top:15px;
+  left:15px;
+  background:white;
+  padding:4px 12px;
+  border-radius:30px;
+  font-size:12px;
+  font-weight:500;
+}
+
+/* HEART */
+.pop-heart{
+  position:absolute;
+  top:15px;
+  right:15px;
+  background:white;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:0.2s;
+  font-size:16px;
+}
+
+.heart-filled{
+  color:red;
+}
+
+.pop-heart:hover{
+  transform:scale(1.1);
+}
+
+/* BODY */
+.pop-body{
+  padding:12px 18px;
+}
+
+/* RATING */
+.pop-rating{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-weight:600;
+  margin-bottom:4px;
+}
+
+.pop-star{
+  color:#ff7a45;
+}
+
+.pop-rating span{
+  color:#6b7280;
+  font-weight:400;
+}
+
+/* TITLE */
+.pop-body h3{
+  font-size:18px;
+  margin-bottom:6px;
+  margin-top:0px;
+  font-weight:600;
+  font-family:'Playfair Display', serif;
+}
+
+/* DESCRIPTION */
+.pop-desc{
+  font-family:'Inter', sans-serif;
+  color:#6b7280;
+  font-size:14px;
+  line-height:1.4;
+  margin-bottom:8px;
+  margin-top:4px;
+
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+/* BOTTOM */
+.pop-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.pop-time{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  color:#6b7280;
+  font-size:14px;
+}
+
+.pop-price{
+  font-size:16px;
+  font-weight:600;
+}
+
+.pop-price span{
+  font-size:14px;
+  color:#6b7280;
+}
+
+/* ========================= */
+/* 📱 TABLET */
+/* ========================= */
+
+@media (max-width:1024px){
+
+  .pop-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .pop-header h2{
+    font-size:40px;
+  }
+
+}
+
+/* ========================= */
+/* 📱 MOBILE */
+/* ========================= */
+
+@media (max-width:768px){
+
+  .pop-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+  }
+
+  .pop-header h2{
+    font-size:30px;
+  }
+
+  .pop-header p{
+    font-size:15px;
+  }
+
+  .pop-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  .pop-card{
+    max-width:100%;
+  }
+
+}
+
+/* ========================= */
+/* 📱 SMALL MOBILE */
+/* ========================= */
+
+@media (max-width:400px){
+
+  .pop-container{
+    padding:0 12px;
+  }
+
+}
