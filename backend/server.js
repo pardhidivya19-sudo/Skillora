@@ -17,9 +17,6 @@ app.use("/api/admin", adminRoutes);
 const providerRoutes = require("./routes/providerRoutes");
 app.use("/api/provider", providerRoutes);
 
-
-
-
 // Protected test route
 const { verifyToken } = require("./middleware/authMiddleware");
 
@@ -27,6 +24,12 @@ app.get("/protected", verifyToken, (req, res) => {
   res.json({ message: "Protected route working", user: req.user });
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server running on port ${process.env.PORT}`);
+// ✅ ADD THIS ROOT ROUTE (important for testing)
+app.get("/", (req, res) => {
+  res.send("Skillora Backend Running 🚀");
 });
+
+
+
+// ✅ EXPORT APP (VERY IMPORTANT)
+module.exports = app;
