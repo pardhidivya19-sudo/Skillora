@@ -43,7 +43,7 @@ console.log("WAITING PAGE BOOKING ID:", bookingId);
 
     return () => clearInterval(interval);
 
-  }, []);
+  }, [navigate, selectedDate, selectedTime, address, service, bookingId]);
 
   return (
     <div style={{ padding: "80px", textAlign: "center" }}>

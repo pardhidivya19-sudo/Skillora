@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import API from "../../services/api";
 import "./ServicePerformance.css";
-import { Package, IndianRupee, Star } from "lucide-react";
+import { Star } from "lucide-react";
 
 function ServicePerformance() {
   const [data, setData] = useState([]);
