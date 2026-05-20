@@ -60,15 +60,20 @@ function PopularServices() {
             <p>Most booked services by our customers</p>
           </div>
 
-<a className="pop-view" onClick={() => {
-  if (!localStorage.getItem("token")) {
-    alert("Please login first");
-    navigate("/login");
-    return;
-  }
+<a 
+  href="#" 
+  className="pop-view" 
+  onClick={(e) => {
+    e.preventDefault();
+    if (!localStorage.getItem("token")) {
+      alert("Please login first");
+      navigate("/login");
+      return;
+    }
 
-  navigate("/services");
-}}>
+    navigate("/services");
+  }}
+>
   View All →
 </a>
         </div>

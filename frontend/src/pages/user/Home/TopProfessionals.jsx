@@ -71,8 +71,10 @@ image: item.profile_image && item.profile_image.trim() !== ""
           </div>
 
           <a 
+            href="#"
             className="tp-view"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               if (!localStorage.getItem("token")) {
                 alert("Please login first");
                 navigate("/login");
