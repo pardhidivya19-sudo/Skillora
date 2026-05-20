@@ -21,16 +21,6 @@ ChartJS.register(
 );
 
 function VendorEarnings() {
-  const [stats, setStats] = useState(null);
-  
-  const fetchStats = async () => {
-    try {
-      const res = await API.get("/provider/dashboard-stats");
-      setStats(res.data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
   const [data, setData] = useState(null);
   
   const fetchData = async () => {
@@ -57,10 +47,6 @@ const handleWithdraw = async () => {
 useEffect(() => {
   fetchData();
 }, []);
-
-  useEffect(() => {
-    fetchStats();
-  }, []);
 
   const chartData = {
   labels: data?.monthly?.map((m) => m.month),
